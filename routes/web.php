@@ -31,6 +31,18 @@ require __DIR__.'/auth.php';
 Route::get('/evenement/ajouter', [EvenementController:: class,'ajouter']);
 Route::post('/ajouter_traitement', [EvenementController:: class,'ajouter_evenement'])->name('ajouter');
 
+
 Route::get('/liste', [EvenementController:: class,'index']);
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'modifier'])->name('modifier');
 Route::post('/modifier_traitement/{id}', [EvenementController:: class,'modifier_traitement'])->name('modifier_traitement');
+
+
+Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
+Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
+    Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
+    Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
+    Route::get('/evenements/{evenement}/edit', [EvenementController::class, 'edit'])->name('evenements.edit');
+    Route::put('/evenements/{evenement}', [EvenementController::class, 'update'])->name('evenements.update');
+    Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
+   Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
+

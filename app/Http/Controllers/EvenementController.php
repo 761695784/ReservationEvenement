@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 class EvenementController extends Controller
 {
+
     public function index() {
         $evenements=Evenement::all();
-        return view('evenements.liste',compact('evenements'));
+        return view('evenements.index',compact('evenements'));
     }
+
 
     public function ajouter() {
         return view('evenements.ajouter');
@@ -48,6 +50,7 @@ class EvenementController extends Controller
         return redirect()->back()->with('status', 'Votre événement a été publié');
     }
 
+
     public function modifier($id) {
         $evenement = Evenement::find($id);
         return view('evenements.modifier', compact('evenement'));
@@ -78,6 +81,13 @@ class EvenementController extends Controller
         $evenement->dernier_delai = $request->dernier_delai;
         $evenement->save(); // Sauvegarder l'événement dans la base de données
         return redirect()->back()->with('status', 'Votre événement a été modifié');
-    }
+
+}
+public function destroy (Evenement $evenement)
+{
+    $evenement->delete();
+    return redirect()->route('evenements.index')->with('success', 'Evenement supprimée avec succès');
+
+}
 
 }
