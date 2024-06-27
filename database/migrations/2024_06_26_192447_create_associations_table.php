@@ -17,11 +17,13 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('adresse');
             $table->string('secteur_activite');
-            $table->string('ninea');
+            $table->string('ninea')->unique();
             $table->date('date_creation');
-            $table->unsignedBigInteger('user_id'); // Correction de la colonne de clé étrangère
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            // Définir la clé étrangère
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
