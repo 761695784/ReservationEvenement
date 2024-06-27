@@ -50,4 +50,10 @@ class EvenementController extends Controller
         return redirect()->back()->with('status', 'Votre événement a été publié');
     }
 
+    public function destroy(Evenement $evenement)
+    {
+        $evenement->delete();
+        return redirect()->route('evenements.index')->with('success', 'Evenement supprimée avec succès');
+    }
+
 }
