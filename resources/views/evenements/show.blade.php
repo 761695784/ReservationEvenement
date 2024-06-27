@@ -17,7 +17,7 @@
         <p><strong>Date:</strong> {{ $evenement->date_evenement }}</p>
         <p><strong>Lieu:</strong> {{ $evenement->lieu }}</p>
         <p><strong>Description:</strong> {{ $evenement->description }}</p>
-        <p><strong>Catégorie:</strong> {{ $evenement->nombre_place }}</p>
+        <p><strong>nombre de place:</strong> {{ $evenement->nombre_place }}</p>
         <p><strong>Statut:</strong> {{ $evenement->dernier_delai }}</p>
     </div>
 
