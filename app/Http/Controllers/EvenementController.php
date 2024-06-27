@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class EvenementController extends Controller
 {
     public function index() {
-        return view('evenement.ajouter');
+        $evenements=Evenement::all();
+        return view('evenements.liste',compact('evenements'));
+    }
+
+    public function ajouter() {
+        return view('evenements.ajouter');
     }
 
     public function ajouter_evenement(Request $request)
