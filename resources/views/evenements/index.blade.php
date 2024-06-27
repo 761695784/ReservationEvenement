@@ -7,11 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Document</title>
+    <link href="{{ asset('css/evenement_association.css') }}" rel="stylesheet">
+    <title>Gestion d'évènement et de réservation</title>
 </head>
 <body>
     <div class="container">
-        <h1>Liste des idées</h1>
+        <h1>Nos évènements</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -19,7 +20,7 @@
             </div>
         @endif
 
-        <a href="{{ route('evenements.create') }}" class="btn btn-primary mb-3">Ajouter un évenement</a>
+        <a href="{{ route('evenements.create') }}" class="btn">Ajouter un évenement</a>
 
         <table class="table table-bordered">
             <thead>
