@@ -55,5 +55,9 @@ class EvenementController extends Controller
         $evenement->delete();
         return redirect()->route('evenements.index')->with('success', 'Evenement supprimée avec succès');
     }
+    public function show(Evenement $evenement)
+    {
+        return view('evenements.show', compact('evenement'));
+    }
 
 }
