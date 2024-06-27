@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('nom');
             $table->date('date_evenement');
             $table->string('image');
+            $table->string('lieu');
+            $table->integer('nombre_place');
+            $table->text('description');
+            $table->date('dernier_delai');
+            $table->unsignedBigInteger('association_id');
+            $table->foreign('association_id')->references('id')->on('associations')->onDelete('cascade');
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

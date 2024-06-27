@@ -9,21 +9,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Association extends Authenticatable
 {
-    use HasFactory, Notifiable;
 
-    protected $guard = 'association'; // Définir le nom du guard personnalisé si nécessaire
-
+    use HasFactory;
     protected $fillable = [
-        'description', 'logo', 'adresse', 'secteur_activite', 'ninea', 'date_creation', 'user_id', 'password',
+        'description',
+        'logo',
+        'adresse',
+        'secteur_activite',
+        'ninea',
+        'date_creation',
+        'user_id',
     ];
-
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    // Relation avec l'utilisateur principal
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
+    public function evenement(){
+        return $this->hasMany(Evenement::class);
+    }
+    
 }
