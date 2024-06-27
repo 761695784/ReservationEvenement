@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Evenement;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ class EvenementController extends Controller
 
         return redirect()->back()->with('status', 'Votre événement a été publié');
     }
+
     public function modifier($id) {
         $evenement = Evenement::find($id);
         return view('evenements.modifier', compact('evenement'));
@@ -77,4 +79,5 @@ class EvenementController extends Controller
         $evenement->save(); // Sauvegarder l'événement dans la base de données
         return redirect()->back()->with('status', 'Votre événement a été modifié');
     }
+
 }
