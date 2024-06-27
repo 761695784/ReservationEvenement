@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Evenement;
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
 {
-    public function index() {
-        $evenements=Evenement::all();
-        return view('evenements.liste',compact('evenements'));
-    }
-
+   
     public function ajouter() {
         return view('evenements.ajouter');
     }
