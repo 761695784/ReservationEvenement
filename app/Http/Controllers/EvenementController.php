@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Models\Evenement;
-=======
->>>>>>> mame
+
 use Illuminate\Http\Request;
 
 class EvenementController extends Controller
 {
-<<<<<<< HEAD
     public function index() {
         $evenements=Evenement::all();
         return view('evenements.liste',compact('evenements'));
@@ -50,7 +46,5 @@ class EvenementController extends Controller
 
         return redirect()->back()->with('status', 'Votre événement a été publié');
     }
-=======
-    //
->>>>>>> mame
+
 }
