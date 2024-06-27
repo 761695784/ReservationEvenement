@@ -41,7 +41,7 @@ Route::get('/evenements', [EvenementController::class, 'index'])->name('evenemen
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
     Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
     Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
-    Route::get('/evenements/{evenement}/edit', [EvenementController::class, 'edit'])->name('evenements.edit');
+  //  Route::get('/evenements/{evenement}/edit', [EvenementController::class, 'edit'])->name('evenements.edit');
     Route::put('/evenements/{evenement}', [EvenementController::class, 'update'])->name('evenements.update');
     Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
    Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
