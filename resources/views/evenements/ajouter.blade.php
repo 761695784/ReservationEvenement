@@ -9,69 +9,95 @@
 </head>
 <style>
     body {
-    font-family: Arial, sans-serif;
-}
+        font-family: Arial, sans-serif;
+    }
 
-.sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    padding-top: 20px;
-}
+    .sidebar-sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding-top: 20px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
-.sidebar-heading {
-    padding: 10px 15px;
-    font-size: 1.2rem;
-}
+    .sidebar-heading {
+        padding: 10px 15px;
+        font-size: 1.2rem;
+    }
 
-.sidebar .nav-link {
-    font-size: 1rem;
-}
+    .sidebar .nav-link {
+        font-size: 1rem;
+        margin-bottom: 30px;/* Ajoute de l'espacement entre les liens */
+        margin: 1.2rem;
+        margin-right: 30px;
+        color:#000; ;
+        font-weight: bold;
+    }
 
-.sidebar .nav-link.active {
-    color: #FF6600;
-    font-weight: bold;
-}
+    .sidebar .nav-link.active {
+        color: #FF6600;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        background-color: #FF6600;
+        border-radius: 25px 0 0 25px; /* Ajoute des coins arrondis */
+        padding: 10px;
+        width: 93%;
+    }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
 
-.btn-warning {
-    width: 100%;
-}
+    .btn-warning {
+        width: 100%;
+        background-color: #FF6600;
+    }
+
+    .logout-button {
+        margin-top: auto; /* Pousse le bouton de déconnexion vers le bas */
+        padding: 20px 0;
+    }
 
 </style>
 <body>
+
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
-                    <h4 class="sidebar-heading">Nom Association</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Evénements
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Historiques
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Settings
-                            </a>
-                        </li>
-                    </ul>
-                    <button class="btn btn-warning mt-4">Déconnexion</button>
+                    <div>
+                        <h4 class="sidebar-heading">Nom Association</h4>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">
+                                    Evénements
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Historiques
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logout-button">
+                        <button class="btn btn-warning">Déconnexion</button>
+                    </div>
                 </div>
             </nav>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
