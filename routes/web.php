@@ -31,6 +31,7 @@ require __DIR__.'/auth.php';
 Route::get('/evenement/ajouter', [EvenementController:: class,'ajouter']);
 Route::post('/ajouter_traitement', [EvenementController:: class,'ajouter_evenement'])->name('ajouter');
 
+
 Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
     Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
