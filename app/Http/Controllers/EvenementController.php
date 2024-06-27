@@ -55,6 +55,7 @@ class EvenementController extends Controller
         $evenement = Evenement::find($id);
         return view('evenements.modifier', compact('evenement'));
     }
+
     public function modifier_traitement(Request $request){
         $request->validate([
             'nom' =>'required',
@@ -89,5 +90,10 @@ public function destroy (Evenement $evenement)
     return redirect()->route('evenements.index')->with('success', 'Evenement supprimée avec succès');
 
 }
+
+    public function show(Evenement $evenement)
+    {
+        return view('evenements.show', compact('evenement'));
+    }
 
 }
