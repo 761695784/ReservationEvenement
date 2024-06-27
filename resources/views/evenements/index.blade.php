@@ -25,6 +25,7 @@
                 <tr>
                     <th>Titre</th>
                     <th>Date</th>
+                    <th>Lieu</th>
                     <th>Actions</th>
                     <th>Liste inscrit</th>
                 </tr>
@@ -34,13 +35,18 @@
                     <tr>
                         <td>{{ $evenement->nom }}</td>
                         <td>{{ $evenement->date_evenement }}</td>
+                        <td>{{ $evenement->lieu }}</td>
                         <td>
-                            
-                            <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-info">
+                                <i class="fas fa-eye"></i></a>   
+                            <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-warning">
+                                <i class="fas fa-edit"></i></a>
                             <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
                             </form>
                         </td>
                     </tr>
