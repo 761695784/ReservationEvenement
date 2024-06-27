@@ -32,3 +32,5 @@ Route::get('/evenement/ajouter', [EvenementController:: class,'ajouter']);
 Route::post('/ajouter_traitement', [EvenementController:: class,'ajouter_evenement'])->name('ajouter');
 
 Route::get('/liste', [EvenementController:: class,'index']);
+Route::get('/evenement/modifier/{id}', [EvenementController:: class,'modifier'])->name('modifier');
+Route::post('/modifier_traitement/{id}', [EvenementController:: class,'modifier_traitement'])->name('modifier_traitement');
