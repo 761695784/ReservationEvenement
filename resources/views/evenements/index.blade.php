@@ -41,14 +41,14 @@
                         <td>{{ $evenement->lieu }}</td>
                         <td>
 
-                            <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-info">
-                                <i class="fas fa-eye"></i></a>
-                            <a href="{{route('modifier', $evenement->id)}}" class="btn btn-warning">
+                            {{-- <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-info">
+                                <i class="fas fa-eye"></i></a> --}}
+                            {{-- <a href="{{route('modifier', $evenement->id)}}" class="btn btn-warning"> --}}
 
                             <a href="{{ route('evenements.show', $evenement->id) }}" class="btn action">
                                 <i class="fas fa-eye"></i></a>
-                            <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn action">
-
+                            <a href="#" class="btn action">
+                                {{-- {{ route('evenements.edit', $evenement->id) }} --}}
                                 <i class="fas fa-edit"></i></a>
                             <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
