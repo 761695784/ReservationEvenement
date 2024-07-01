@@ -10,7 +10,7 @@
         body {
         font-family: Arial, sans-serif;
     }
-    
+
     .sidebar-sticky {
         position: -webkit-sticky;
         position: sticky;
@@ -18,25 +18,25 @@
         height: 100vh;
         padding-top: 20px;
     }
-    
+
     .sidebar-heading {
         padding: 10px 15px;
         font-size: 1.2rem;
     }
-    
+
     .sidebar .nav-link {
         font-size: 1rem;
     }
-    
+
     .sidebar .nav-link.active {
         color: #FF6600;
         font-weight: bold;
     }
-    
+
     .form-group {
         margin-bottom: 1.5rem;
     }
-    
+
     .btn-warning {
         width: 100%;
     }
@@ -53,7 +53,7 @@
           text-align: center;
           vertical-align: middle;
       }
-    
+
     </style>
     <body>
         {{-- <div class="container-fluid">
@@ -126,11 +126,12 @@
                                     <td>{{ $evenement->dernier_delai }}</td>
                                     {{-- <td>{{ $evenement->categorie->libelle }}</td> --}}
                                     <td>
-                                        {{-- <a href="/evenement/modifier/{{$evenement->id}}" class="icon" title="Modifier">
+
                                             <i class="fa fa-edit">Modifier</i>
                                         </a> --}}
 
-                                        <form action="{{ route('evenement.supprimer', $evenement->id) }}" method="POST" style="display:inline-block;">
+                                        <form action="" method="POST" style="display:inline-block;">
+                                            {{-- {{ route('evenement.supprimer', $evenement->id) }} --}}
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="icon btn btn-link p-0" title="Supprimer" style="color: inherit;">

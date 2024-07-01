@@ -27,4 +27,5 @@ class Association extends Authenticatable
         return $this->hasMany(Evenement::class);
     }
     
+    
 }

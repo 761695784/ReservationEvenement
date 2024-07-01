@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+
+}
+:root{
+    --couleur-pricinpal:#E67E22;
+    --police:Raleway;
+    --taille-titre:30px;
+    --taille-sous-titre:24px;
+    --taille-text:16px;
+}
+h1{
+    text-align: center;
+}
