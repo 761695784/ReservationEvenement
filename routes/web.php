@@ -53,6 +53,8 @@ Route::get('/evenements/create', [EvenementController::class, 'ajouter'])->name(
  //  Route::get('/evenement/reserver/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
 
  Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
+ Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
+
 
 // Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])
 //     ->middleware('storeEventId')
