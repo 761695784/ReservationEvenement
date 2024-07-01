@@ -1,6 +1,9 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="image-container">
+        <img src="{{ asset('public/storage/images/uEtladd7Mc1silIdr8Cqx5z87ctc7raZjVDSFsf8.png') }}" alt="Register Background" class="w-full h-full object-cover" />
+    </div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -21,7 +24,7 @@
                             name="password"
                             required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" /> 
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
