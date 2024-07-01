@@ -46,4 +46,12 @@ class EvenementController extends Controller
 
         return redirect()->back()->with('status', 'Votre événement a été publié');
     }
+
+    public function supprimer($id)
+    {
+        $evenement = Evenement::findOrFail($id);
+        $evenement->delete();
+
+        return redirect()->back()->with('status', "L'événement a été supprimé avec succès");
+    }
 }

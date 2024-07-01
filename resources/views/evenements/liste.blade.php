@@ -117,18 +117,18 @@
                         <tbody>
                             @foreach($evenements as $evenement)
                                 <tr>
-                                    <td><img src="{{ $evenement->image }}" alt="{{ $evenement->nom }}" height="40"></td>
+                                    <td><img src="{{ asset('storage/' . $evenement->image) }}" alt="{{ $evenement->nom }}" height="40"></td>
                                     <td>{{ $evenement->nom }}</td>
                                     <td>{{ $evenement->description }}</td>
                                     <td>{{ $evenement->date_evenement }}</td>
                                     <td>{{ $evenement->lieu }}</td>
-                                    <td>{{ $evenement->dernier_delai }}</td>
                                     <td>{{ $evenement->nombre_place    }}</td>
+                                    <td>{{ $evenement->dernier_delai }}</td>
                                     {{-- <td>{{ $evenement->categorie->libelle }}</td> --}}
-                                    {{-- <td>
-                                        <a href="/evenement/modifier/{{$evenement->id}}" class="icon" title="Modifier">
+                                    <td>
+                                        {{-- <a href="/evenement/modifier/{{$evenement->id}}" class="icon" title="Modifier">
                                             <i class="fa fa-edit">Modifier</i>
-                                        </a>
+                                        </a> --}}
 
                                         <form action="{{ route('evenement.supprimer', $evenement->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
@@ -140,7 +140,7 @@
                                         <a href="#" class="icon" title="Voir les détails" data-bs-toggle="modal" data-bs-target="#detailsModal" data-id="{{$evenement->id}}">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('index', absolute: false));
     }
        public function storeAssociation(Request $request): RedirectResponse
     {
@@ -83,7 +83,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($association));
 
-        return redirect(route('dashboard'));
+        return redirect(route('index'));
     }
 }
 
