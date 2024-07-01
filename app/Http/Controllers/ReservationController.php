@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
     public function index()
     {
         $user = auth()->user();
         $reservations = $user->reservations()->with('evenement')->get();
 
         return view('reservations.index', compact('reservations'));
+    }
+    public function reserver ($id){
+        $evenement = Evenement::find($id);
+        return view('evenements.reservation',compact('evenement'));
+
     }
 }
