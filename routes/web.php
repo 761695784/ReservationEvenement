@@ -65,3 +65,6 @@ Route::get('/evenements/create', [EvenementController::class, 'ajouter'])->name(
 
 
 Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
+
+Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
+
