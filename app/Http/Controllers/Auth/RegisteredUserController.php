@@ -37,12 +37,14 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'string','max:15', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'telephone' => $request->telephone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -51,7 +53,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('index', absolute: false));
+        return redirect(route('evenements.index', absolute: false));
     }
        public function storeAssociation(Request $request): RedirectResponse
     {

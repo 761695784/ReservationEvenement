@@ -39,7 +39,7 @@ Route::post('/modifier_traitement/{id}', [EvenementController:: class,'modifier_
 
 
 Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
-Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
+Route::get('/evenements/create', [EvenementController::class, 'ajouter'])->name('evenements.create');
     Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
     Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
   //  Route::get('/evenements/{evenement}/edit', [EvenementController::class, 'edit'])->name('evenements.edit');
