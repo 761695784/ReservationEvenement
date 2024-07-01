@@ -13,15 +13,16 @@
 <body>
     <div class="container">
         <h1>Nos évènements</h1>
-
+ 
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        <a href="{{ route('evenements.create') }}" class="btn">Ajouter un évenement</a>
-
+        <a href="{{ route('evenements.create') }}" class="btn btn_ajout">Ajouter un évenement</a>
+        <br>
+        <br>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -39,17 +40,20 @@
                         <td>{{ $evenement->date_evenement }}</td>
                         <td>{{ $evenement->lieu }}</td>
                         <td>
-                            <a href="{{ route('evenements.show', $evenement->id) }}" class="btn btn-info">
+                            <a href="{{ route('evenements.show', $evenement->id) }}" class="btn action">
                                 <i class="fas fa-eye"></i></a>   
-                            <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn btn-warning">
+                            <a href="{{ route('evenements.edit', $evenement->id) }}" class="btn action">
                                 <i class="fas fa-edit"></i></a>
                             <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">
+                                <button type="submit" class="btn action">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
+                        </td>
+                        <td>
+                            <a href="#" class="stretched-link ">Voir la liste</a>
                         </td>
                     </tr>
                 @endforeach
