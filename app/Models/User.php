@@ -12,7 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, HasRoles;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','telephone'
     ];
 
     protected $hidden = [
@@ -23,5 +23,10 @@ class User extends Authenticatable
     public function associations()
     {
         return $this->hasMany(Association::class);
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
     }
 }

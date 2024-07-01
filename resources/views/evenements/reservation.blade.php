@@ -41,44 +41,44 @@
 </style>
 <body>
     <div class="container mt-5">
-
-
         <div class="row">
             <div class="col-md-6 mb-3 mb-md-0">
+                <!-- Image de l'événement -->
                 <img src="{{ asset('storage/' . $evenement->image) }}" class="img-fluid" alt="Table setting">
             </div>
             <div class="col-md-6">
                 <h2 class="text-center text-orange">Reservation</h2>
-                <form>
+                <form action="{{route('reservation.store')}}" method="POST">
+                    @csrf
                     <!-- Champ caché pour l'ID de l'événement -->
-                    <input type="hidden" name="evenement_id" value="evenement_id">
+                    <input type="hidden" name="evenement_id" value="{{ $evenement->id }}">
 
-                    <!-- Champ caché pour l'ID de l'utilisateur (par exemple, si vous utilisez une session PHP ou autre) -->
-                    <input type="hidden" name="user_id" value="user_id">
+                    <!-- Champ caché pour l'ID de l'utilisateur (utilisation de auth()->id() pour récupérer l'ID de l'utilisateur authentifié) -->
+                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
                     <!-- Champ de nom complet en lecture seule -->
                     <div class="form-group">
                         <label for="name">Nom Complet</label>
-                        <input type="text" class="form-control" id="name" value="Nom de l'utilisateur" readonly>
+                        <input type="text" class="form-control" id="name" value="{{ auth()->user()->name }}" readonly>
                     </div>
 
                     <!-- Champ d'e-mail en lecture seule -->
                     <div class="form-group">
                         <label for="email">E-mail Address</label>
-                        <input type="email" class="form-control" id="email" value="email@utilisateur.com" readonly>
+                        <input type="email" class="form-control" id="email" value="{{ auth()->user()->email }}" readonly>
                     </div>
 
                     <!-- Champ de numéro de téléphone modifiable -->
                     <div class="form-group">
                         <label for="phone">Numero Telephone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Entrez votre numero">
+                        <input type="text" class="form-control" id="phone" name="phone" value="{{ auth()->user()->telephone }}" readonly>
                     </div>
 
                     <!-- Bouton de validation -->
                     <button type="submit" class="btn btn-orange btn-block">Valider</button>
 
                     <!-- Nombre de places disponibles -->
-                    <p class="text-center mt-3">Nombre de place disponible : <span class="text-danger">14</span></p>
+                    <p class="text-center mt-3">Nombre de place disponible : <span class="text-danger">{{ $evenement->nombre_place }}</span></p>
                 </form>
             </div>
         </div>

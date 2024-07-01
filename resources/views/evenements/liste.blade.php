@@ -126,10 +126,9 @@
                                     <td>{{ $evenement->dernier_delai }}</td>
                                     {{-- <td>{{ $evenement->categorie->libelle }}</td> --}}
                                     <td>
-                                        <a href="{{route('modifier', $evenement->id)}}" class="icon" title="Modifier">
-                                            {{-- /evenement/modifier/{{$evenement->id}} --}}
+
                                             <i class="fa fa-edit">Modifier</i>
-                                        </a>
+                                        </a> --}}
 
                                         <form action="" method="POST" style="display:inline-block;">
                                             {{-- {{ route('evenement.supprimer', $evenement->id) }} --}}
