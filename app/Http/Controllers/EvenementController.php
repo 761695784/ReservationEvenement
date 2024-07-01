@@ -96,4 +96,10 @@ public function destroy (Evenement $evenement)
         return view('evenements.show', compact('evenement'));
     }
 
+
+    public function event(){
+        $evenements=Evenement::all();
+        return view('evenements.event',compact('evenements'));
+    }
+
 }
