@@ -13,4 +13,23 @@
 }
 h1{
     text-align: center;
+    font-size: var(--taille-titre);
+}
+.btn_ajout{
+    background-color: var(--couleur-pricinpal);
+    color:#ffffff;
+    font-size: var(--taille-sous-titre);
+    float: right;
+}
+.table{
+    margin-top: 20px;
+}
+.action{
+    color: var(--couleur-pricinpal);
+}
+.stretched-link{
+    color: #000000;
+}
+thead{
+    color: var(--couleur-pricinpal);
 }
