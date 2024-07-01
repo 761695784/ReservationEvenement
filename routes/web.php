@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,3 +48,17 @@ Route::get('/evenements/create', [EvenementController::class, 'create'])->name('
     Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
    Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
 
+
+ //  Route::get('/evenement/reserver/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
+
+ Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
+
+// Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])
+//     ->middleware('storeEventId')
+//     ->name('evenement.reserver');
+
+    // Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
+
+
+
+Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
