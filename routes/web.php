@@ -6,10 +6,47 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
-    return view('welcome');
+        // $createAdmin=Role::create(['name'=>'Administrateur']);
+        // $createUtilisateuSimple=Role::create(['name'=>'UtilisateurSimple']);
+        // $createAssociation=Role::create(['name'=>'Association']);
+
+        // $permissionEvenements = Permission::create(['name'=>'GestionEvenements']); 
+        // $permissionAssociations = Permission::create(['name'=>'GestionAssociations']); 
+        // $permissionSupprimerEvenement = Permission::create(['name'=>'GestionSupprimerEvenement']); 
+        // $permissionReservation = Permission::create(['name'=>'Reservation']); 
+        // $permissionUtilisateurs = Permission::create(['name'=>'GestionUtilisateurs']); 
+        // $permissionPermissions = Permission::create(['name'=>'GestionPermissions']); 
+
+        // $roleAdmin = Role::find(1);
+        // $roleAdmin->givePermissionTo('GestionAssociations');
+        // $roleAdmin->givePermissionTo('GestionSupprimerEvenement');
+        // $roleAdmin->givePermissionTo('GestionUtilisateurs');
+        // $roleAdmin->givePermissionTo('GestionPermissions');
+        // $roleAdmin->save();
+        
+        // $roleUtilisateur = Role::find(2);
+        // $roleUtilisateur->givePermissionTo('Reservation');
+        // $roleUtilisateur->save();
+        
+        // $roleAssociation = Role::find(3);
+        // $roleAssociation->givePermissionTo('GestionEvenements');
+        // $roleAssociation->save();
+
+        $user = auth()->user();
+        $assignRole=$user->assignRole('Administrateur');
+        // dump($assignRole);
+        return view('welcome');
+
+
+
+
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
