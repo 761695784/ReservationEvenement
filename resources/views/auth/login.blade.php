@@ -4,24 +4,25 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+        <h1 class="titre">Connexion</h1>
+        <div class="button-class">
+            <div class="icone-Google">
+                <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+            <div class="tit">Connexion avec Google </div>
+        </div>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full input-height" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" /> 
+            <x-text-input id="password" class="block mt-1 w-full input-height" type="password" name="password" required autocomplete="current-password" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Remember Me -->
@@ -32,16 +33,59 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="item">
+            <x-primary-button class="ms-3">
+                {{ __('Connexion') }}
+            </x-primary-button><br>
+
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
         </div>
     </form>
+    <style>
+        body {
+            background-image: url({{ asset('storage/images/connect.png') }});
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .titre {
+            font-size: 50px;
+            color: #E67E22;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form {
+            padding: 4vh;
+        }
+
+        .input-height {
+            height: 55px;
+        }
+
+        .item {
+            display: flex !important;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column !important;
+        }
+
+        .ms-3 {
+            width: 100%;
+            text-align: center !important;
+            justify-content: center !important;
+            background-color: #E67E22;
+            font-size: 20px !important;
+            height: 50px !important;
+
+
+
+        }
+    </style>
+
 </x-guest-layout>

@@ -35,40 +35,70 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2%;
             }
              h1 {
             text-align: center;
         }
-        .evenements .event{
-            background-image: url('{{ asset('storage/images/rectangle10.png') }}')
+        
+        .event{
+            background-image: url('{{ asset('storage/images/rectangle10.png') }}');
+            background-repeat: no-repeat;
+            
         }
         .evenements .texte {
+            background-color: #f5f5f5;
+            width: 29.5%;
+            height: 16vh;
             font-size: 15px;
-            width: 40%;
+            margin-top: -1px;
+            padding-top: 20px;
+            color: gray;
+            text-align: center;
+            padding-left: 100px;
+            padding-right: 90px;
         }
         .evenements .titre{
             background-color: #E67E22;
-            width: 40%;
-            padding: 0.05vh;
-            text-align: center
+            color: #f2f2f2;
+            width: 43.5%;
+            padding:0.005vh 0.05vh 0.005vh 0.05vh;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 12%;
         }
 
-        .valeurs{
+        
+        .detailsEvent{
+            background-image: url('{{ asset('storage/images/rectangle10.png') }}');
+            background-repeat: no-repeat;
+            color:white;
+            
+        }
+
+        .date{
+            color: #f2f2f2;
+            background-color: #f77d00;
+            width: 3%;
+            font-size: 17px;
+        }
+
+        .valeur{
             display: flex;
             justify-content: space-around;
             align-items: center;
             text-align: center;
-            margin-top: 2%;
+        }
+
+        .valeurs{
+            margin-top: 20%;
+
         }
 
         .qui-sommes-nous{
             margin-top: 5%;
             display: flex;
             margin-left: 10%;
-            /* justify-content: center; */
             align-items: center;
-            /* padding: 2%; */
             
         }
         .grid-container {
@@ -84,9 +114,6 @@
         .grid-item {
             padding: -15%;
             background-color: #fff;
-            /* border-radius: 8px; */
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-            /* text-align: center; */
         }
 
         .grid-item img {
@@ -106,8 +133,6 @@
         }
 
         .description {
-            /* padding: 20px; */
-            /* text-align: left; */
             width: 50%;
             font-size: 18px;
             width: 380px;
@@ -131,7 +156,6 @@
             display: flex;
             flex-direction: column;
             /* margin-top: 5%; */
-            display: flex;
             margin-left: 10%;
         }
         
@@ -182,12 +206,12 @@
             margin-bottom: 1%;
         }
 
+
      
 
 </style>
 </head>
 <body>
-    @extends('layouts.app')
     <div class="banniere">
     <div>
         <img src="{{ asset('storage/images/image5.png') }}" alt="banniere">
@@ -199,7 +223,8 @@
         <button class="button">Réserver maintenant</button>
     </div>
     </div>
-    {{-- <h1>NOS EVENEMENTS PHARES</h1>
+    <h1>NOS EVENEMENTS PHARES</h1>
+    <section class="Evenement"></section>
         <div class="evenements">
             <div class="event">
                 <div class="image">
@@ -210,16 +235,26 @@
                 </div>
                 <div class="texte">
                     <p>Cet événement annuel réunit les leaders de l'industrie, les entrepreneurs influents, les décideurs politiques et les personnalités médiatiques pour une soirée de reconnaissance et de célébration.</p>
-            </div>
-            <div class="detailsEvent">
-
-            </div> --}}
+                </div>
+           
+        
+                <div class="detailsEvent">
+                    <h3>soirée de disctinction des entreprises</h3>
+                    <div class="Detail">
+                    <p><img src="{{ asset('storage/images/calendrier.png') }}" alt=""> 27 Juin 2024</p>
+                    </div>
+                    <div class="Detail">
+                        <p><img src="{{ asset('storage/images/Vector.png') }}" alt=""> 27 Juin 2024</p>
+                    </div>     
+                    <div class="Detail">
+                        <p><img src="{{ asset('storage/images/Vector2.png') }}" alt=""> 27 Juin 2024</p>
+                </div>    </div>
             
         {{-- </div> --}}
-
+<div class="valeurs">
         <h1>NOS VALEURS</h1>
 
-        <div class="valeurs">
+        <div class="valeur">
             <div class="card" style="width: 18rem;">
                 <img src="{{ asset('storage/images/Vector.png') }}" class="card-img-top" alt="..." height="50" width="60">
                 <div class="card-body">
@@ -251,6 +286,7 @@ text ever since the 1500s,</p>
                 </div>
               </div>
         </div>
+    </div>
 
         <div class="container mt-5 qui-sommes-nous">
             <div class="grid-container">

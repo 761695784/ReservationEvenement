@@ -29,6 +29,7 @@
 
     .img-fluid {
         border-radius: 8px;
+        height: 100%;
     }
 
     .container {
@@ -39,6 +40,16 @@
         margin-bottom: 20px;
     }
 </style>
+@if (session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
+@if (session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
 <body>
     <div class="container mt-5">
         <div class="row">
@@ -78,8 +89,7 @@
                     <button type="submit" class="btn btn-orange btn-block">Valider</button>
 
                     <!-- Nombre de places disponibles -->
-                    <p class="text-center mt-3">Nombre de place disponible : <span class="text-danger">{{ $evenement->nombre_place }}</span></p>
-                </form>
+                    <p class="text-center mt-3">Nombre de places disponibles : <span class="text-danger">{{ $evenement->nombre_place }}</span></p>                </form>
             </div>
         </div>
     </div>

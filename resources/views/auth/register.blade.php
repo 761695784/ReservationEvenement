@@ -1,6 +1,15 @@
 <x-guest-layout>
+    <style >
+        .titre{
+            font-size: 50px;
+            color: #E67E22;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
     <form method="POST" action="{{ route('register') }}">
         @csrf
+        <h1 class='titre'>Creer mon Compte</h1>
 
         <!-- Name -->
         <div>
@@ -9,7 +18,7 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="telephone" :value="__('telephone')" />
@@ -46,16 +55,45 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+        </div><br>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="item">
+
+            <x-primary-button class="ms-4">
+                {{ __('Créer mon Compte') }}
+            </x-primary-button><br>
+
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
         </div>
     </form>
+    <style>
+        body {
+            background-image: url({{ asset('storage/images/register.png') }});
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+       .item{
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column !important;
+       }
+
+       .ms-4 {
+            width: 100%;
+            text-align: center !important;
+            justify-content: center !important;
+            background-color: #E67E22;
+            font-size: 20px !important;
+            height: 50px !important;
+
+
+
+        }
+    </style>
 </x-guest-layout>
