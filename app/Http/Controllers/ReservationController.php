@@ -74,6 +74,7 @@ class ReservationController extends Controller
         $reservations = Reservation::with('evenement', 'user')
                                     ->where('evenement_id', $evenement_id)
                                     ->get();
-        return view('evenements.inscrit', compact('reservations'));
+                                    $evenement = Evenement::find($evenement_id);
+        return view('evenements.inscrit', compact('reservations','evenement'));
     }
 }

@@ -29,6 +29,7 @@
 
     .img-fluid {
         border-radius: 8px;
+        height: 100%;
     }
 
     .container {

@@ -14,12 +14,12 @@ Route::get('/', function () {
         // $createUtilisateuSimple=Role::create(['name'=>'UtilisateurSimple']);
         // $createAssociation=Role::create(['name'=>'Association']);
 
-        // $permissionEvenements = Permission::create(['name'=>'GestionEvenements']); 
-        // $permissionAssociations = Permission::create(['name'=>'GestionAssociations']); 
-        // $permissionSupprimerEvenement = Permission::create(['name'=>'GestionSupprimerEvenement']); 
-        // $permissionReservation = Permission::create(['name'=>'Reservation']); 
-        // $permissionUtilisateurs = Permission::create(['name'=>'GestionUtilisateurs']); 
-        // $permissionPermissions = Permission::create(['name'=>'GestionPermissions']); 
+        // $permissionEvenements = Permission::create(['name'=>'GestionEvenements']);
+        // $permissionAssociations = Permission::create(['name'=>'GestionAssociations']);
+        // $permissionSupprimerEvenement = Permission::create(['name'=>'GestionSupprimerEvenement']);
+        // $permissionReservation = Permission::create(['name'=>'Reservation']);
+        // $permissionUtilisateurs = Permission::create(['name'=>'GestionUtilisateurs']);
+        // $permissionPermissions = Permission::create(['name'=>'GestionPermissions']);
 
         // $roleAdmin = Role::find(1);
         // $roleAdmin->givePermissionTo('GestionAssociations');
@@ -27,17 +27,17 @@ Route::get('/', function () {
         // $roleAdmin->givePermissionTo('GestionUtilisateurs');
         // $roleAdmin->givePermissionTo('GestionPermissions');
         // $roleAdmin->save();
-        
+
         // $roleUtilisateur = Role::find(2);
         // $roleUtilisateur->givePermissionTo('Reservation');
         // $roleUtilisateur->save();
-        
+
         // $roleAssociation = Role::find(3);
         // $roleAssociation->givePermissionTo('GestionEvenements');
         // $roleAssociation->save();
 
         $user = auth()->user();
-        $assignRole=$user->assignRole('Administrateur');
+      //  $assignRole=$user->assignRole('Administrateur');
         // dump($assignRole);
         return view('welcome');
 

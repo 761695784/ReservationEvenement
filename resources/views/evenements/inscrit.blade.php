@@ -62,6 +62,7 @@
             color: white;
             font-weight: bold;
         }
+
         .sidebar {
             box-shadow: 0 10px 1px 0px rgba(0, 0, 0, 0.2);
         }
@@ -99,6 +100,12 @@
 
             .sidebar .btn-warning {
                 margin-bottom: 20px;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none;
             }
         }
     </style>
@@ -143,21 +150,21 @@
             </nav>
             <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h2">Evénements</h1>
+                    <h1 class="h2">{{$evenement->nom}}</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Imprimer</button>
+                            <button class="btn btn-primary mt-3" onclick="printDiv('printSection')">Imprimer</button>
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" id="printSection">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>Nom Complet</th>
                                 <th>Email</th>
                                 <th>Téléphone</th>
-                                <th>Action</th>
+                                <th class="no-print">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -166,7 +173,7 @@
                                 <td>{{ $reservation->user->name }}</td>
                                 <td>{{ $reservation->user->email }}</td>
                                 <td>{{ $reservation->user->telephone }}</td>
-                                <td><button class="btn btn-danger btn-sm">Décliner</button></td>
+                                <td class="no-print"><button class="btn btn-danger btn-sm">Décliner</button></td>
                             </tr>
                             @endforeach
                             <!-- Répétez pour les autres lignes -->
@@ -176,6 +183,18 @@
             </main>
         </div>
     </div>
+    <script>
+        function printDiv(divId) {
+            var printContents = document.getElementById(divId).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
