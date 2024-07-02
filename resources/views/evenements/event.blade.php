@@ -1,93 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Événements</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-    body {
-    background-color: #f8f9fa;
-}
-
-.navbar-brand {
-    font-weight: bold;
-}
-
-.btn-orange {
-    background-color: #f77d00;
-    border: none;
-}
-
-.btn-orange:hover {
-    background-color: #d66b00;
-}
-
-.card {
-    border-radius: 8px;
-}
-
-.card-title {
-    color: #f77d00;
-}
-
-footer {
-    background-color: #f77d00;
-    color: white;
-}
-
-footer a {
-    color: white;
-    margin: 0 10px;
-}
-
-footer form .form-control {
-    width: auto;
-}
-
-footer form .btn-orange {
-    background-color: white;
-    color: #f77d00;
-    border: 1px solid white;
-}
-
-footer form .btn-orange:hover {
-    background-color: #d66b00;
-    border: 1px solid #d66b00;
-}
-
-h5 {
-    font-weight: bold;
-}
-.card-img-top {
-        height: 200px; /* Hauteur souhaitée */
-        object-fit: cover; /* Pour conserver les proportions et couper l'image si nécessaire */
-    }
-
-</style>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Nom du plateforme</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Événements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-orange text-white" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+@extends('layouts.appe')
+@section('content')
 
     <!-- Main Content -->
     <div class="container mt-5">
@@ -148,8 +60,4 @@ h5 {
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+    @endsection

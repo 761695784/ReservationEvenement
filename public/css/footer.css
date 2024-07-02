@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+
+}
+:root{
+    --couleur-pricinpal:#E67E22;
+    --police:Raleway;
+    --taille-titre:30px;
+    --taille-sous-titre:24px;
+    --taille-text:16px;
+}
+.footer{
+    width: 100%;
+    height: 492px;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.avant_footer{
+    width: 100%;
+    background-color: var(--couleur-pricinpal);
+    display: flex;
+    padding-top: 20px;
+    padding-left: 12%;
+}
+.joindre{
+    margin-left: 50px;
+}
+.newsletter{
+    margin-left: 40%;
+}
+.avant_footer .joindre h2{
+    font-size: 24px;
+    font-weight: bold;
+    color:#ffffff;
+    text-align: center;
+}
+.avant_footer .joindre h4{
+    font-weight: bold;
+    font-size: 20px;
+    color:#ffffff; 
+    text-align: center;
+    margin-top: 30px;
+}
+
+.avant_footer .joindre .icone{
+    display: flex;
+    text-align: center;
+    margin-top: 30px;
+}
+.avant_footer .joindre .icone img{
+    margin-right: 10px; /* Ajouter de l'espace entre les icônes */
+}
+.avant_footer .newsletter h4{
+    font-weight: bold;
+    font-size: 20px;
+    color:#ffffff;
+}
+
+.avant_footer .newsletter form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer .newsletter .input-group {
+    display: flex;
+    width: 100%;
+}
+  
+.avant_footer .newsletter form input[type="email"]{
+    padding: 10px;
+    margin-top: 30px;   
+    height: 45px;      
+    border: 0.5px solid #ffffff;
+    font-weight:400;     
+    font-family: 20px;
+    background-color: transparent;
+}
+.avant_footer .newsletter form button {
+    margin-top: 30px;
+    width: 250px;
+    height: 45px;
+    background-color:#ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right:20px;
+}
+.avant_footer .newsletter form .button_newsletter{
+    font-weight: bold;
+    font-size: 20px;
+    color:var(--couleur-pricinpal);
+    
+} 
+.avant_footer .newsletter form{
+    display: flex;
+    flex-direction: column;
+}
+                                         
+.footer_final{
+    width: 100%;
+    background-color: var(--couleur-pricinpal);
+    display: flex;
+    padding-top:30px;
+    padding-left:15%;
+}
+.footer_final .copy{
+    display: flex;
+    padding-bottom: 10px;
+    margin-right: 10%;
+}
+.footer_final .copy p{
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+}
+.footer_final .copy img{
+    width: 25px;
+    height: 25px;
+}
+.footer_final .line{
+    width: 600%;
+    height: 1.5px;
+    background-color: #ffffff; /* Couleur des traits */
+    margin-right: 11%; /* Espace autour du texte */
+    margin-top: 10px;
+
+}
+
+
