@@ -58,21 +58,32 @@ class RegisteredUserController extends Controller
        public function storeAssociation(Request $request): RedirectResponse
     {
         $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'string','max:15', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'description' => ['required', 'string', 'max:255'],
             'logo' => ['nullable', 'file', 'image', 'max:2048'],
             'adresse' => ['required', 'string', 'max:255'],
             'secteur_activite' => ['required', 'string', 'max:255'],
             'ninea' => ['required', 'string', 'max:255', 'unique:associations'],
-            'user_id' => ['required', 'exists:users,id'],
         ]);
 
+        
+        $user = User::create([
+            'name' => $request->name,
+            'telephone' => $request->telephone,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ])->assignRole('Association');
+
         $associationData = [
+            'user_id' => $user->id, // Lie l'association à l'utilisateur
             'description' => $request->description,
             'adresse' => $request->adresse,
             'secteur_activite' => $request->secteur_activite,
             'ninea' => $request->ninea,
             'date_creation' => now(),
-            'user_id' => $request->user_id,
         ];
 
         // Gérer l'upload du logo s'il est présent
@@ -85,7 +96,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($association));
 
-        return redirect(route('index'));
+        return redirect(route('evenements.index'));
     }
 }
 
