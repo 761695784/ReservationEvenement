@@ -56,42 +56,11 @@
 
     </style>
     <body>
-        {{-- <div class="container-fluid">
-            <div class="row">
-                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                    <div class="sidebar-sticky">
-                        <h4 class="sidebar-heading">Nom Association</h4>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    Evénements
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Historiques
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Settings
-                                </a>
-                            </li>
-                        </ul>
-                        <button class="btn btn-warning mt-4">Déconnexion</button>
-                    </div>
-                </nav> --}}
-
     <div class="container text-center">
         <div class="row">
             <div class="col">
                 <hr>
-                <a href="evenement/ajouter" class="btn prod1">Ajouter des Evénements</a>
+                <a href="evenements/create" class="btn prod1">Ajouter des Evénements</a>
                 <hr>
                 @if(session('status'))
                     <div class="alert alert-success">
@@ -126,12 +95,13 @@
                                     <td>{{ $evenement->dernier_delai }}</td>
                                     {{-- <td>{{ $evenement->categorie->libelle }}</td> --}}
                                     <td>
-                                        <a href="{{ route('evenement.modifier', $evenement->id) }}" class="icon" title="Modifier">
+                                         <a href="{{ route('evenements.show', $evenement->id) }}" class="btn action">
+                                            <i class="fas fa-eye">Details</i></a>
+
+                                        <a href="{{route('evenements.edit',$evenement->id)}}" class="icon" title="Modifier">
                                             <i class="fa fa-edit">Modifier</i>
                                         </a>
-
-                                        <form action="" method="POST" style="display:inline-block;">
-                                            {{-- {{ route('evenement.supprimer', $evenement->id) }} --}}
+                                        <form action="{{ route('evenements.destroy', $evenement->id) }}" method="POST" style="display:inline-block;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="icon btn btn-link p-0" title="Supprimer" style="color: inherit;">
@@ -141,6 +111,7 @@
                                         <a href="#" class="icon" title="Voir les détails" data-bs-toggle="modal" data-bs-target="#detailsModal" data-id="{{$evenement->id}}">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
+                                        <a href="evenements/inscrit" class="insc ">Voir la liste</a>
                                     </td>
                                 </tr>
                             @endforeach

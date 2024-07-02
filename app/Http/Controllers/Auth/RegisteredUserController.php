@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
             'telephone' => $request->telephone,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ])->assignRole('UtilisateurSimple');
 
         event(new Registered($user));
 
@@ -81,11 +81,11 @@ class RegisteredUserController extends Controller
             $associationData['logo'] = $logoPath;
         }
 
-        $association = Association::create($associationData);
+        $association = Association::create($associationData)->assignRole('UtilisateurSimple');
 
         event(new Registered($association));
 
-        return redirect(route('index'));
+        return redirect(route('evenements.ajouter'));
     }
 }
 
