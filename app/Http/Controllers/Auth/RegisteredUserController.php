@@ -85,7 +85,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($association));
 
-        return redirect(route('index'));
+        return redirect(route('evenements.ajouter'));
     }
 }
 

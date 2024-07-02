@@ -22,7 +22,7 @@ Route::get('/', function () {
         // $permissionPermissions = Permission::create(['name'=>'GestionPermissions']);
 
         // $roleAdmin = Role::find(1);
-        // $roleAdmin->givePermissionTo('GestionAssociations');
+         //$roleAdmin->givePermissionTo('GestionAssociations');
         // $roleAdmin->givePermissionTo('GestionSupprimerEvenement');
         // $roleAdmin->givePermissionTo('GestionUtilisateurs');
         // $roleAdmin->givePermissionTo('GestionPermissions');
@@ -101,4 +101,4 @@ Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->nam
 
 Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
 
-//Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
+Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');

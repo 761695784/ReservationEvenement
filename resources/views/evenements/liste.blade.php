@@ -111,9 +111,7 @@
                                         <a href="#" class="icon" title="Voir les détails" data-bs-toggle="modal" data-bs-target="#detailsModal" data-id="{{$evenement->id}}">
                                             <i class="fas fa-info-circle"></i>
                                         </a>
-                                        <td>
-                                            <a href="" class="stretched-link ">Voir la liste</a>
-                                        </td>
+                                        <a href="evenements/inscrit" class="insc ">Voir la liste</a>
                                     </td>
                                 </tr>
                             @endforeach
