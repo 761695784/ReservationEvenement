@@ -83,7 +83,8 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">SIMPLON Senegal Numérique</h1>
                 </div>
-                <form method="POST" action="{{route ('modifier_traitement',$evenement->id)}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route ('evenements.update',$evenement->id)}}" enctype="multipart/form-data">
+
                     @csrf
                     <input type="hidden" name="id" value="{{$evenement->id}}">
                     <div class="form-group">

@@ -11,15 +11,15 @@ class EvenementController extends Controller
 
     public function index() {
         $evenements=Evenement::all();
-        return view('evenements.index',compact('evenements'));
+        return view('evenements.liste',compact('evenements'));
     }
 
 
-    public function ajouter() {
+    public function create() {
         return view('evenements.ajouter');
     }
 
-    public function ajouter_evenement(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'nom' => 'required',
@@ -51,12 +51,12 @@ class EvenementController extends Controller
     }
 
 
-    public function modifier($id) {
+    public function edit($id) {
         $evenement = Evenement::find($id);
         return view('evenements.modifier', compact('evenement'));
     }
 
-    public function modifier_traitement(Request $request){
+    public function update(Request $request){
         $request->validate([
             'nom' =>'required',
             'date_evenement' =>'required',
@@ -87,7 +87,7 @@ class EvenementController extends Controller
 public function destroy (Evenement $evenement)
 {
     $evenement->delete();
-    return redirect()->route('evenements.index')->with('success', 'Evenement supprimée avec succès');
+    return redirect()->back()->with('status', 'Evenement supprimée avec succès');
 
 }
 
