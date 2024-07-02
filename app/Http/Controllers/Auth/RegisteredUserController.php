@@ -81,7 +81,7 @@ class RegisteredUserController extends Controller
             $associationData['logo'] = $logoPath;
         }
 
-        $association = Association::create($associationData)->assignRole('UtilisateurSimple');
+        $association = Association::create($associationData);
 
         event(new Registered($association));
 
