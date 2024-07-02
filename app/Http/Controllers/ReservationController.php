@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Inscription;
 use App\Models\Evenement;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -62,6 +64,10 @@ class ReservationController extends Controller
             $evenement->nombre_place -= 1;
             $evenement->save();
 
+            // Envoyer l'email de confirmation
+            $user = auth()->user();
+            Mail::to($user->email)->send(new Inscription($user, $evenement));
+
             // Rediriger l'utilisateur après la réservation
             return redirect()->back()->with('status', 'Réservation effectuée avec succès.');
         }
@@ -77,4 +83,5 @@ class ReservationController extends Controller
                                     $evenement = Evenement::find($evenement_id);
         return view('evenements.inscrit', compact('reservations','evenement'));
     }
+    
 }

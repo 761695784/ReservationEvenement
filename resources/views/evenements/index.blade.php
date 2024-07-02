@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        <a href="{{ route('evenements.create') }}" class="btn btn_ajout">Ajouter un évenement</a>
+        <a href="{{ route('ajouter') }}" class="btn btn_ajout">Ajouter un évenement</a>
         <br>
         <br>
         <table class="table table-bordered">
