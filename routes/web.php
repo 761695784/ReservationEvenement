@@ -37,7 +37,9 @@ Route::get('/', function () {
         // $roleAssociation->save();
 
         $user = auth()->user();
+
       //  $assignRole=$user->assignRole('Administrateur');
+
         // dump($assignRole);
         return view('welcome');
 
