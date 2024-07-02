@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -69,38 +70,27 @@ Route::post('/register/association', [RegisteredUserController::class, 'storeAss
 require __DIR__.'/auth.php';
 
 
-//Route::get('/evenements/ajouter', [EvenementController:: class,'ajouter'])->name('ajout');
-//Route::post('/ajouter_traitement', [EvenementController:: class,'ajouter_evenement'])->name('ajouter');
-
-
 
 Route::get('/liste', [EvenementController:: class,'index']);
+
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'edit'])->name('evenements.edit');
+
 Route::post('/modifier_traitement/{id}', [EvenementController:: class,'update'])->name('evenements.update');
 
-
-//Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.ajouter');
+
 Route::post('/evenements/store', [EvenementController::class, 'store'])->name('evenements.store');
-//Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
-//Route::get('/evenements/{evenement}/edit', [EvenementController::class, 'edit'])->name('evenements.edit');
-//Route::put('/evenements/{evenement}', [EvenementController::class, 'update'])->name('evenements.update');
+
 Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
+
 Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
-//  Route::get('/evenement/reserver/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
 
- Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
- Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
+Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
 
-
-// Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])
-//     ->middleware('storeEventId')
-//     ->name('evenement.reserver');
-
-    // Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
-
-
+Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 
 Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
 
 Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
+
+Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin.listeAsso');
