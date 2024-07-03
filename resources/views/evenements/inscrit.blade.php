@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nom Association - Evénements</title>
+    <title> Gestion d'évènement et de réservation{{--{{ $evenement->nom }}--}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -119,8 +119,9 @@
             <nav class="col-md-2 d-md-block bg-light sidebar collapse" id="sidebar">
                 <div class="sidebar-sticky">
                     <div>
-                        <h4 class="sidebar-heading">Nom Association</h4>
-                        <ul class="nav flex-column">
+                        <h4 class="sidebar-heading">
+                            {{ $associationName }}
+                        </h4>                      <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-tachometer-alt"></i> Dashboard
@@ -128,7 +129,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="#">
-                                    <i class="fas fa-calendar-alt"></i> Evénements
+                                    <i class="fas fa-calendar-alt"></i>Evenement
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -150,35 +151,45 @@
             </nav>
             <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h2">{{$evenement->nom}}</h1>
+                <h1 class="h2">{{ $evenement->nom }}</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
-                            <button class="btn btn-primary mt-3" onclick="printDiv('printSection')">Imprimer</button>
+                            <button class="btn btn-primary mt-3" onclick="printDiv('printSection')">
+                                <i class="fas fa-print"></i> Imprimer
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive" id="printSection">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Nom Complet</th>
-                                <th>Email</th>
-                                <th>Téléphone</th>
-                                <th class="no-print">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($reservations as $reservation)
-                            <tr>
-                                <td>{{ $reservation->user->name }}</td>
-                                <td>{{ $reservation->user->email }}</td>
-                                <td>{{ $reservation->user->telephone }}</td>
-                                <td class="no-print"><button class="btn btn-danger btn-sm">Décliner</button></td>
-                            </tr>
-                            @endforeach
-                            <!-- Répétez pour les autres lignes -->
-                        </tbody>
-                    </table>
+                <div id="printSection">
+                    {{-- <h2>{{ $evenement->nom }}</h2> --}}
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nom Complet</th>
+                                    <th>Email</th>
+                                    <th>Téléphone</th>
+                                    <th class="no-print">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($reservations as $reservation)
+                                <tr>
+                                    <td>{{ $reservation->user->name }}</td>
+                                    <td>{{ $reservation->user->email }}</td>
+                                    <td>{{ $reservation->user->telephone }}</td>
+                                    <td>
+                                        <form action="{{ route('reservations.decliner', $reservation->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Décliner</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </main>
         </div>

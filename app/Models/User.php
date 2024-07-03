@@ -20,13 +20,14 @@ class User extends Authenticatable
     ];
 
     // Relation avec les associations
-    public function associations()
-    {
-        return $this->hasMany(Association::class);
-    }
+    public function association()
+{
+    return $this->belongsTo(Association::class);
+}
 
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
+    
 }

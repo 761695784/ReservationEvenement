@@ -69,7 +69,7 @@ class RegisteredUserController extends Controller
             'ninea' => ['required', 'string', 'max:255', 'unique:associations'],
         ]);
 
-        
+
         $user = User::create([
             'name' => $request->name,
             'telephone' => $request->telephone,
@@ -96,7 +96,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($association));
 
+
+        return redirect(route('evenements.ajouter'));
+
         return redirect(route('evenements.index'));
+
     }
 }
 
