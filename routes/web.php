@@ -94,3 +94,7 @@ Route::get('/evenement/event', [EvenementController::class,'event'])->name('even
 Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
 
 Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin.listeAsso');
+
+// Route pour gérer la déclinaison
+Route::delete('/reservations/{reservation}/decliner', [ReservationController::class, 'decliner'])->name('reservations.decliner');
+

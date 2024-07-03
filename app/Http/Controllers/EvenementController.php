@@ -101,5 +101,6 @@ public function destroy (Evenement $evenement)
         $evenements=Evenement::all();
         return view('evenements.event',compact('evenements'));
     }
+    
 
 }

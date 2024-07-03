@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Decline;
 use App\Mail\Inscription;
 use App\Models\Evenement;
 use App\Models\Reservation;
@@ -83,5 +84,25 @@ class ReservationController extends Controller
                                     $evenement = Evenement::find($evenement_id);
         return view('evenements.inscrit', compact('reservations','evenement'));
     }
+
+    public function decliner($id)
+    {
+    $reservation = Reservation::find($id);
+    if ($reservation) {
+        $user = $reservation->user;
+        $evenement = $reservation->evenement;
+
+        // Supprimer la réservation
+        $reservation->delete();
+
+        // Envoyer l'email de confirmation de déclinaison
+        Mail::to($user->email)->send(new Decline($user, $evenement));
+
+        return redirect()->back()->with('status', 'L\'utilisateur a été décliné et un email de confirmation a été envoyé.');
+    }
+
+    return redirect()->back()->with('error', 'La réservation n\'a pas été trouvée.');
+}
+
     
 }
