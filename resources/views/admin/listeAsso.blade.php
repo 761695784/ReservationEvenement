@@ -53,16 +53,23 @@
             padding: 15px;
             margin-bottom: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         .association-card img {
-            max-width: 100px;
-            height: auto;
+            width: 600px; /* Taille fixe pour correspondre à la maquette */
+            height: 250px; /* Taille fixe pour correspondre à la maquette */
+            object-fit: cover;
+            border-radius: 0px;
         }
         .association-details {
-            flex-grow: 1;
-            margin-left: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .association-details h4 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
         .status {
             color: green;
@@ -71,6 +78,11 @@
         .delete-icon {
             color: red;
             cursor: pointer;
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+        .pagination {
+            justify-content: center;
         }
         @media (max-width: 768px) {
             .sidebar {
@@ -113,42 +125,23 @@
 
 <div class="content">
     <h2 class="mb-4">Liste des Associations</h2>
-    <div class="association-card">
-        <img src="images/simplon_logo.png" alt="Logo SIMPLON">
-        <div class="association-details">
-            <h4>SIMPLON Senegal</h4>
-            <p>Numérique</p>
-            <span class="status">✔ Active</span>
-        </div>
-        <i class="fas fa-trash delete-icon"></i>
+    <div class="row">
+        @foreach ($associations as $association)
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="association-card">
+                    <img src="{{ asset('storage/' . $association->logo) }}" class="img-fluid" alt="Logo de l'association">
+                    <div class="association-details">
+                        <h4>{{ $association->name ?? $association->user->name }}</h4>
+                        <span class="status">{{ $association->is_active ? '✔ Active' : '✘ Inactive' }}</span>
+                    </div>
+                    <i class="fas fa-trash delete-icon"></i>
+                </div>
+            </div>
+        @endforeach
     </div>
-    <div class="association-card">
-        <img src="images/sonatel_logo.png" alt="Logo Sonatel">
-        <div class="association-details">
-            <h4>Sonatel</h4>
-            <p>Numérique</p>
-            <span class="status">✔ Active</span>
-        </div>
-        <i class="fas fa-trash delete-icon"></i>
-    </div>
-    <div class="association-card">
-        <img src="images/orphelin_vert_logo.png" alt="Logo Orphelin Vert">
-        <div class="association-details">
-            <h4>Orphelin Vert</h4>
-            <p>Action Sociale</p>
-            <span class="status">✔ Active</span>
-        </div>
-        <i class="fas fa-trash delete-icon"></i>
-    </div>
-    <div class="association-card">
-        <img src="images/aes_logo.png" alt="Logo AES">
-        <div class="association-details">
-            <h4>AES</h4>
-            <p>Education</p>
-            <span class="status">✔ Active</span>
-        </div>
-        <i class="fas fa-trash delete-icon"></i>
-    </div>
+    {{-- <div class="d-flex justify-content-center">
+        {{ $associations->links() }}
+    </div> --}}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

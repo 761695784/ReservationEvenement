@@ -28,4 +28,6 @@
         </div>
     </div>
     @include('evenements.ajouter')
+    {{-- @include('evenements.reserver') --}}
+    {{-- @include('admin.listeAsso') --}}
 </x-app-layout>

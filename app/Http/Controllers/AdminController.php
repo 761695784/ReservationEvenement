@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Association;
+
 
 class AdminController extends Controller
 {
-   public function accueil(){
-       return view('admin.listeAsso');
-   }
+    public function accueil(){
+        // Récupérer toutes les associations
+        $associations = Association::all();
+
+        return view('admin.listeAsso', compact('associations'));
+    }
 }

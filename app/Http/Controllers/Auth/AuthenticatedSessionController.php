@@ -51,7 +51,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('association.dashboard', [], false));
         }
         else {
-            return redirect()->intended(route('dashboard', [], false));
+            return redirect()->intended(route('evenement.reserver', [], false));
         }
     }
 
