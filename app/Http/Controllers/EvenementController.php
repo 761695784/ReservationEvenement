@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evenement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EvenementController extends Controller
 {
@@ -16,7 +17,8 @@ class EvenementController extends Controller
 
 
     public function create() {
-        return view('evenements.ajouter');
+        $user = Auth::user();
+        return view('evenements.ajouter', compact('user'));
     }
 
     public function store(Request $request)
@@ -29,7 +31,7 @@ class EvenementController extends Controller
             'nombre_place' => 'required|integer',
             'description' => 'required',
             'dernier_delai' => 'required|date',
-            // 'association_id' => 'required',
+            'association_id' => 'required',
             // 'categorie_id' => 'required',
         ]);
 
@@ -44,6 +46,7 @@ class EvenementController extends Controller
         $evenement->nombre_place = $request->nombre_place;
         $evenement->description = $request->description;
         $evenement->dernier_delai = $request->dernier_delai;
+        $evenement->association_id = $request->input('association_id'); // Ajoutez cette ligne
 
         $evenement->save(); // Sauvegarder l'événement dans la base de données
 
@@ -65,7 +68,7 @@ class EvenementController extends Controller
             'nombre_place' =>'required|integer',
             'description' =>'required',
             'dernier_delai' =>'required|date',
-            // 'association_id' =>'required',
+            'association_id' =>'required',
             // 'categorie_id' =>'required',
         ]);
 
@@ -93,7 +96,10 @@ public function destroy (Evenement $evenement)
 
     public function show(Evenement $evenement)
     {
-        return view('evenements.show', compact('evenement'));
+        $user = auth()->user();
+        $association = $user->association; // Assurez-vous que l'association est correctement récupérée
+        return view('evenements.show', compact('evenement', 'user', 'association'));
+
     }
 
 

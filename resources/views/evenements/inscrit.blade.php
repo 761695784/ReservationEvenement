@@ -119,8 +119,9 @@
             <nav class="col-md-2 d-md-block bg-light sidebar collapse" id="sidebar">
                 <div class="sidebar-sticky">
                     <div>
-                        <h4 class="sidebar-heading">Nom Association</h4>
-                        <ul class="nav flex-column">
+                        <h4 class="sidebar-heading">
+                            {{ $associationName }}
+                        </h4>                      <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-tachometer-alt"></i> Dashboard

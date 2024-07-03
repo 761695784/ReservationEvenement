@@ -24,8 +24,8 @@
 
                     {{ __("You're logged in!") }}
                 </div>
-                
             </div>
         </div>
     </div>
+    @include('evenements.ajouter')
 </x-app-layout>
