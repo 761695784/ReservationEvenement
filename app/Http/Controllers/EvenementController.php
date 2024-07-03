@@ -105,7 +105,8 @@ public function destroy (Evenement $evenement)
 
     public function event(){
         $evenements=Evenement::all();
-        return view('evenements.event',compact('evenements'));
+        return view('layouts.sidebare',compact('evenements'));
+        //return view('evenements.event',compact('evenements'));
     }
     
 

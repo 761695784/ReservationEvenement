@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+
+}
+:root{
+    --couleur-pricinpal:#E67E22;
+    --police:Raleway;
+    --taille-titre:30px;
+    --taille-sous-titre:24px;
+    --taille-text:16px;
+}
+body {
+    font-family: var(--police);
+    overflow-x: hidden;
+}
+.wrapper {
+    position: relative;
+    
+}
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.sidebar-heading {
+    padding: 10px 15px;
+    font-size: 1.2rem;
+}
+
+.sidebar .nav-link {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    margin: 1.2rem;
+    margin-right: 30px;
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.sidebar .nav-link.active {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    background-color: #FF6600;
+    border-radius: 25px 0 0 25px; /* Ajoute des coins arrondis */
+    padding: 10px;
+    width: 93%;
+}
+.btn-warning {
+    width: 100%;
+    background-color: #FF6600;
+}
+.sidebar {
+box-shadow: 0 10px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.logout-button {
+    margin-top: auto; 
+    padding: 20px 0;
+}
