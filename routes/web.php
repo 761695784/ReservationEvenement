@@ -89,6 +89,8 @@ Route::get('/evenements/create', [EvenementController::class, 'ajouter'])->name(
    Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
 
 
+   
+
  //  Route::get('/evenement/reserver/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
 
  Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');

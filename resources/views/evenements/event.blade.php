@@ -19,7 +19,7 @@
                         <p class="card-text">{{$evenement->date_evenement }}</p>
                         <p class="card-text">{{$evenement->lieu}}</p>
                         <a href="#" class="btn btn-primary">Détails</a>
-                        <a href="/login" class="btn btn-secondary">S'inscrire</a>
+                        <a href="{{route('evenement.reserver')}}" class="btn btn-secondary">S'inscrire</a>
                     </div>
                 </div>
             </div>

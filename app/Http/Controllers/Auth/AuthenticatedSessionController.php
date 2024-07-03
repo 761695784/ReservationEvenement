@@ -20,12 +20,12 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         
-        $user = User::create([
-            'name' =>'Malang Marna',
-            'telephone' => 778128428,
-            'email' =>'malcom@gmail.com',
-            'password' => Hash::make('123456789'),
-        ])->assignRole('Administrateur');
+        // $user = User::create([
+        //     'name' =>'Malang Marna',
+        //     'telephone' => 778128428,
+        //     'email' =>'malcom@gmail.com',
+        //     'password' => Hash::make('123456789'),
+        // ])->assignRole('Administrateur');
 
         return view('auth.login');
     }
@@ -51,7 +51,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(route('association.dashboard', [], false));
         } 
         else {
-            return redirect()->intended(route('dashboard', [], false));
+            return redirect()->intended(route('evenement.reserver', [], false));
         }
     }
 
