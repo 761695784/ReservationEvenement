@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Evenement;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,26 +34,70 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     return redirect()->intended(route('dashboard', absolute: false));
+    //     $user = $request->user();
+
+    //     // Vérifie le rôle de l'utilisateur et redirige en conséquence
+    //     if ($user->hasRole('Administrateur') ) {
+    //         return redirect()->intended(route('dashboard.admin', [], false));
+    //     }
+    //     elseif ($user->hasRole('Association')) {
+    //         return redirect()->intended(route('association.dashboard', [], false));
+    //     }
+    //     else {
+    //         return redirect()->intended(route('evenement.reserver', [], false));
+    //     }
+    // }
+
+    // /**
+    //  * Destroy an authenticated session.
+    //  */
+    // public function destroy(Request $request): RedirectResponse
+    // {
+    //     Auth::guard('web')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/');
+    // }
+
+
     public function store(LoginRequest $request): RedirectResponse
     {
+        $credentials = $request->only('email', 'password');
 
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
-        $user = $request->user();
-
-        // Vérifie le rôle de l'utilisateur et redirige en conséquence
-        if ($user->hasRole('Administrateur') ) {
-            return redirect()->intended(route('dashboard.admin', [], false));
+        // Vérifie si l'utilisateur existe et si son compte est actif
+        $user = User::where('email', $credentials['email'])->first();
+        if ($user && !$user->active) {
+            return redirect()->route('login')->with('status','Votre compte est désactivé.Nous vous prions de contacter l\'administrateur.');
         }
-        elseif ($user->hasRole('Association')) {
-            return redirect()->intended(route('association.dashboard', [], false));
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            // Redirection en fonction du rôle de l'utilisateur
+            if ($user->hasRole('Administrateur')) {
+                return redirect()->intended(route('dashboard.admin'));
+            } elseif ($user->hasRole('Association')) {
+                return redirect()->intended(route('association.dashboard'));
+            } else {
+                $evenement = Evenement::first(); // Ajustez cette logique selon vos besoins
+                return redirect()->intended(route('evenement.reserver',['evenement' => $evenement->id]));
+            }
         }
-        else {
-            return redirect()->intended(route('evenement.reserver', [], false));
-        }
+
+        return back()->withErrors([
+            'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
+        ]);
     }
 
     /**
@@ -68,13 +113,4 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
-//    protected function authenticated(Request $request, $user)
-//     {
-//         if (Session::has('evenement_id')) {
-//             $eventId = Session::get('evenement_id');
-//             return redirect()->route('evenement.reserver', ['evenement' => $eventId]);
-//         }
-//         return redirect()->route('dashboard');
-//         route('dashboard');
-//     }
 }

@@ -110,6 +110,7 @@
 </head>
 <body>
 
+
 <div class="sidebar">
     <div class="sidebar-sticky">
         <h4 class="sidebar-heading text-center">Administrateur</h4>
@@ -124,6 +125,11 @@
 </div>
 
 <div class="content">
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
     <h2 class="mb-4">Liste des Associations</h2>
     <div class="row">
         @foreach ($associations as $association)
@@ -133,6 +139,18 @@
                     <div class="association-details">
                         <h4>{{ $association->name ?? $association->user->name }}</h4>
                         <span class="status">{{ $association->is_active ? '✔ Active' : '✘ Inactive' }}</span>
+
+                        @if ($association->user->active)
+                        <form action="{{ route('user.deactivate', $association->user_id) }}" method="POST">
+                            @csrf
+                            <button type="submit">Désactiver</button>
+                        </form>
+                    @else
+                        <form action="{{ route('user.activate', $association->user_id) }}" method="POST">
+                            @csrf
+                            <button type="submit">Activer</button>
+                        </form>
+                    @endif
                     </div>
                     <i class="fas fa-trash delete-icon"></i>
                 </div>

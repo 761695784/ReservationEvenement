@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Models\Reservation;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
         // $createAdmin=Role::create(['name'=>'Administrateur']);
@@ -71,7 +72,7 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/liste', [EvenementController:: class,'index']);
+Route::get('/liste', [EvenementController:: class,'index'])->name('association.dashboard');
 
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'edit'])->name('evenements.edit');
 
@@ -98,3 +99,8 @@ Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin
 // Route pour gérer la déclinaison
 Route::delete('/reservations/{reservation}/decliner', [ReservationController::class, 'decliner'])->name('reservations.decliner');
 
+
+Route::middleware('auth')->group(function () {
+    Route::post('user/{userId}/activate', [UserController::class, 'activate'])->name('user.activate');
+    Route::post('user/{userId}/deactivate', [UserController::class, 'deactivate'])->name('user.deactivate');
+});
