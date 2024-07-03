@@ -20,7 +20,6 @@
                 {{ session('success') }}
             </div>
         @endif
-
         <a href="/evenements/create" class="btn btn-primary">Ajouter un évenement</a>
         <br>
         <br>

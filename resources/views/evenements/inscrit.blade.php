@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {{ $evenement->nom }}</title>
+    <title> Gestion d'évènement et de réservation{{--{{ $evenement->nom }}--}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -178,10 +178,15 @@
                                     <td>{{ $reservation->user->name }}</td>
                                     <td>{{ $reservation->user->email }}</td>
                                     <td>{{ $reservation->user->telephone }}</td>
-                                    <td class="no-print"><button class="btn btn-danger btn-sm">Décliner</button></td>
+                                    <td>
+                                        <form action="{{ route('reservations.decliner', $reservation->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Décliner</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
-                                <!-- Répétez pour les autres lignes -->
                             </tbody>
                         </table>
                     </div>
