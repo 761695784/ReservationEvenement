@@ -7,7 +7,7 @@
 
 
 //  Pour le sidebar et top bar d'une association //
-@extends('layouts.appe')
+@extends('layouts.sidebare_association')
 @section('content')
 
 
@@ -15,7 +15,7 @@
 
 
 //  Pour le sidebar et le topbar d'un admin //
-@extends('layouts.appe')
+@extends('layouts.sidebare_administrateur')
 @section('content')
 
 
