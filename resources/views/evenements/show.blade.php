@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
         <h1>{{ $evenement->nom }}</h1>
 
         <p><img src="{{ asset('storage/' . $evenement->image) }}" alt="{{ $evenement->nom }}" height="40"></p>
-        
+
         <p><strong>Date:</strong> {{ $evenement->date_evenement }}</p>
         <p><strong>Lieu:</strong> {{ $evenement->lieu }}</p>
         <p><strong>Description:</strong> {{ $evenement->description }}</p>
@@ -25,3 +26,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
+</x-app-layout>

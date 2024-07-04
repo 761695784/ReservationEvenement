@@ -2,6 +2,7 @@
     <a href="{{route('evenements.ajouter')}}" class="btn btn-danger">Ajouter des Evénements</a><hr>
     <a href="{{route('association.dashboard')}}" class="btn btn-primary">Mes evenements</a>
 
+    
     {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div> --}}
+
     {{-- @include('evenements.ajouter') --}}
     {{-- @include('evenements.reserver') --}}
     {{-- @include('admin.listeAsso') --}}

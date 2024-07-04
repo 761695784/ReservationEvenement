@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -196,7 +197,7 @@
                             <input type="date" class="form-control" id="dernier-delai" name="dernier_delai">
                         </div>
                     </div>
-                                        {{-- <input type="hidden" name="association_id" value="{{ $user->association_id }}"> --}}
+                    <input type="hidden" name="association_id" value="{{ auth()->user()->association->id }}">
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </form>
             </main>
@@ -207,3 +208,4 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+</x-app-layout>
