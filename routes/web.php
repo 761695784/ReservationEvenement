@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Association;
 use App\Models\Reservation;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -100,7 +102,13 @@ Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin
 Route::delete('/reservations/{reservation}/decliner', [ReservationController::class, 'decliner'])->name('reservations.decliner');
 
 
-Route::middleware('auth')->group(function () {
-    Route::post('user/{userId}/activate', [UserController::class, 'activate'])->name('user.activate');
-    Route::post('user/{userId}/deactivate', [UserController::class, 'deactivate'])->name('user.deactivate');
-});
+// //Route::middleware('auth')->group(function () {
+//     Route::post('association/{userId}/activate', [UserController::class, 'activate'])->name('association.activate');
+//     Route::post('association/{userId}/deactivate', [UserController::class, 'deactivate'])->name('association.deactivate');
+//});
+
+Route::post('association/{associationId}/activate', [AssociationController::class, 'activate'])->name('association.activate');
+Route::post('association/{associationId}/deactivate', [AssociationController::class, 'deactivate'])->name('association.deactivate');
+
+Route::get('evenementsf/viewOnly', [EvenementController::class, 'index'])->name('evenements.viewOnly');
+

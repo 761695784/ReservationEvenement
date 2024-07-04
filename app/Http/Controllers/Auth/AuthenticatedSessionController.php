@@ -75,26 +75,34 @@ class AuthenticatedSessionController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        // Vérifie si l'utilisateur existe et si son compte est actif
         $user = User::where('email', $credentials['email'])->first();
+
+        // Vérifiez si l'utilisateur existe et si son compte est désactivé
         if ($user && !$user->active) {
-            return redirect()->route('login')->with('status','Votre compte est désactivé.Nous vous prions de contacter l\'administrateur.');
-        }
+            // Authentifiez l'utilisateur mais limitez son accès
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+                // Redirection spécifique pour les utilisateurs désactivés
+                return redirect()->route('evenements.viewOnly');
+            }
+        } else {
+            // Procédez à l'authentification normale
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
 
-            // Redirection en fonction du rôle de l'utilisateur
-            if ($user->hasRole('Administrateur')) {
-                return redirect()->intended(route('dashboard.admin'));
-            } elseif ($user->hasRole('Association')) {
-                return redirect()->intended(route('association.dashboard'));
-            } else {
-                $evenement = Evenement::first(); // Ajustez cette logique selon vos besoins
-                return redirect()->intended(route('evenement.reserver',['evenement' => $evenement->id]));
+                // Redirection en fonction du rôle de l'utilisateur
+                if ($user->hasRole('Administrateur')) {
+                    return redirect()->intended(route('dashboard.admin'));
+                } elseif ($user->hasRole('Association')) {
+                    return redirect()->intended(route('association.dashboard'));
+                } else {
+                    return redirect()->intended(route('evenements.ajouter'));
+                }
             }
         }
 
+        // Si les informations d'identification ne sont pas correctes
         return back()->withErrors([
             'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
         ]);

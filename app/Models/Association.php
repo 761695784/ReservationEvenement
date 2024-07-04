@@ -20,6 +20,9 @@ class Association extends Authenticatable
         'date_creation',
         'user_id',
     ];
+    protected $casts = [
+        'active' => 'boolean',
+    ];
 
     public function user()
     {

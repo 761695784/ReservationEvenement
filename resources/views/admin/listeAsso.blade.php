@@ -109,7 +109,11 @@
     </style>
 </head>
 <body>
-
+         @if (session('status'))
+                <div class="alert alert-success">
+                    {{session('status')}}
+                </div>
+            @endif
 
 <div class="sidebar">
     <div class="sidebar-sticky">
@@ -125,31 +129,28 @@
 </div>
 
 <div class="content">
-    @if (session('status'))
-    <div class="alert alert-success">
-        {{session('status')}}
-    </div>
-@endif
     <h2 class="mb-4">Liste des Associations</h2>
     <div class="row">
-        @foreach ($associations as $association)
+       @foreach ($associations as $association)
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="association-card">
                     <img src="{{ asset('storage/' . $association->logo) }}" class="img-fluid" alt="Logo de l'association">
                     <div class="association-details">
                         <h4>{{ $association->name ?? $association->user->name }}</h4>
-                        <span class="status">{{ $association->is_active ? '✔ Active' : '✘ Inactive' }}</span>
+                        {{-- <span class="status">{{ $association->is_active ? '✔ Active' : '✘ Inactive' }}</span> --}}
 
                         @if ($association->user->active)
-                        <form action="{{ route('user.deactivate', $association->user_id) }}" method="POST">
-                            @csrf
-                            <button type="submit">Désactiver</button>
-                        </form>
+                       <!-- Formulaire pour désactiver une association -->
+                            <form action="{{ route('association.deactivate', $association->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Désactiver</button>
+                            </form>
                     @else
-                        <form action="{{ route('user.activate', $association->user_id) }}" method="POST">
-                            @csrf
-                            <button type="submit">Activer</button>
-                        </form>
+                        <!-- Formulaire pour activer une association -->
+                            <form action="{{ route('association.activate', $association->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Activer</button>
+                            </form>
                     @endif
                     </div>
                     <i class="fas fa-trash delete-icon"></i>
