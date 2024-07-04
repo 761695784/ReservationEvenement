@@ -17,6 +17,7 @@ class Evenement extends Model
         'nombre_place',
         'dernier_delai',
         'image',
+        'association_id',
     ];
     public function association(){
         return $this->belongsTo(Association::class);
@@ -27,5 +28,5 @@ class Evenement extends Model
     public function reservation(){
         return $this->hasMany(Reservation::class);
     }
-    
+
 }

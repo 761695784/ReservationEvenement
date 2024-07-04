@@ -95,6 +95,11 @@
 </style>
 <body>
 
+     @if (session('etat'))
+                <div class="alert alert-success">
+                    {{session('etat')}}
+                </div>
+            @endif
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -135,13 +140,22 @@
                     {{session('status')}}
                 </div>
                 @endif
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                @endif
+
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <img src="{{ asset('images/simplonlogo.png') }}" alt="Logo Association" class="img-fluid" style="max-height: 100px;">
                 </div>
-                <form method="POST" action="/evenements/store" enctype="multipart/form-data">
-
+                @if(session('etat'))
+                <div class="alert alert-warning">
+                    {{ session('etat') }}
+                </div>
+            @endif
+                <form method="POST" action="{{route('evenements.store')}}" enctype="multipart/form-data">
                     @csrf
-
                     <div class="form-group row">
                         <label for="nom-evenement" class="col-sm-2 col-form-label required-field">Nom Evènement</label>
                         <div class="col-sm-10">
@@ -182,6 +196,7 @@
                             <input type="date" class="form-control" id="dernier-delai" name="dernier_delai">
                         </div>
                     </div>
+                                        {{-- <input type="hidden" name="association_id" value="{{ $user->association_id }}"> --}}
                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </form>
             </main>

@@ -12,22 +12,25 @@ class User extends Authenticatable
     use HasFactory, Notifiable, HasRoles;
 
     protected $fillable = [
-        'name', 'email', 'password','telephone'
+        'name', 'email', 'password','telephone','active'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'active' => 'boolean',
+    ];
     // Relation avec les associations
     public function association()
 {
-    return $this->belongsTo(Association::class);
+    return $this->hasOne(Association::class);
 }
 
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
-    
+
 }

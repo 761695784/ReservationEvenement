@@ -34,13 +34,56 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     return redirect()->intended(route('dashboard', absolute: false));
+    //     $user = $request->user();
+
+    //     // Vérifie le rôle de l'utilisateur et redirige en conséquence
+    //     if ($user->hasRole('Administrateur') ) {
+    //         return redirect()->intended(route('dashboard.admin', [], false));
+    //     }
+    //     elseif ($user->hasRole('Association')) {
+    //         return redirect()->intended(route('association.dashboard', [], false));
+    //     }
+    //     else {
+    //         return redirect()->intended(route('evenement.reserver', [], false));
+    //     }
+    // }
+
+    // /**
+    //  * Destroy an authenticated session.
+    //  */
+    // public function destroy(Request $request): RedirectResponse
+    // {
+    //     Auth::guard('web')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/');
+    // }
+
+
     public function store(LoginRequest $request): RedirectResponse
     {
+        $credentials = $request->only('email', 'password');
 
-        $request->authenticate();
+        $user = User::where('email', $credentials['email'])->first();
 
-        $request->session()->regenerate();
+        // Vérifiez si l'utilisateur existe et si son compte est désactivé
+        if ($user && !$user->active) {
+            // Authentifiez l'utilisateur mais limitez son accès
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
 
+<<<<<<< HEAD
         //return redirect()->intended(route('dashboard', absolute: false));
         $user = $request->user();
 
@@ -60,8 +103,31 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended(route('evenement.reserver', ['evenement' => $evenement->id]));
             } else {
                 return redirect()->route('/')->with('error', 'Aucun événement disponible pour la réservation.');
+=======
+                // Redirection spécifique pour les utilisateurs désactivés
+                return redirect()->route('evenements.viewOnly');
+            }
+        } else {
+            // Procédez à l'authentification normale
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+
+                // Redirection en fonction du rôle de l'utilisateur
+                if ($user->hasRole('Administrateur')) {
+                    return redirect()->intended(route('dashboard.admin'));
+                } elseif ($user->hasRole('Association')) {
+                    return redirect()->intended(route('association.dashboard'));
+                } else {
+                    return redirect()->intended(route('evenements.ajouter'));
+                }
+>>>>>>> marna
             }
         }
+
+        // Si les informations d'identification ne sont pas correctes
+        return back()->withErrors([
+            'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
+        ]);
     }
 
     /**
@@ -77,13 +143,4 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
-//    protected function authenticated(Request $request, $user)
-//     {
-//         if (Session::has('evenement_id')) {
-//             $eventId = Session::get('evenement_id');
-//             return redirect()->route('evenement.reserver', ['evenement' => $eventId]);
-//         }
-//         return redirect()->route('dashboard');
-//         route('dashboard');
-//     }
 }

@@ -1,11 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
+    <a href="{{route('evenements.ajouter')}}" class="btn btn-danger">Ajouter des Evénements</a><hr>
+    <a href="{{route('association.dashboard')}}" class="btn btn-primary">Mes evenements</a>
+
+    {{-- <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-    </x-slot>
+    </x-slot> --}}
 
-    <div class="py-12">
+    {{-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
@@ -26,8 +29,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    @include('evenements.ajouter')
+    </div> --}}
+    {{-- @include('evenements.ajouter') --}}
     {{-- @include('evenements.reserver') --}}
     {{-- @include('admin.listeAsso') --}}
 </x-app-layout>

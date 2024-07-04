@@ -1,15 +1,18 @@
 <?php
-
+use App\Models\Association;
 use App\Models\Reservation;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+
 use App\Http\Controllers\AssociationDashboardController;
 
 Route::get('/', function () {
@@ -35,9 +38,9 @@ Route::get('/', function () {
          //$roleUtilisateur->givePermissionTo('Reservation');
          //$roleUtilisateur->save();
 
-         $roleAssociation = Role::find(3);
-         $roleAssociation->givePermissionTo('GestionEvenements');
-         $roleAssociation->save();
+         //$roleAssociation = Role::find(3);
+         //$roleAssociation->givePermissionTo('GestionEvenements');
+         //$roleAssociation->save();
 
         $user = auth()->user();
 
@@ -73,7 +76,7 @@ require __DIR__.'/auth.php';
 
 
 
-Route::get('/liste', [EvenementController:: class,'index']);
+Route::get('/liste', [EvenementController:: class,'index'])->name('association.dashboard');
 
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'edit'])->name('evenements.edit');
 
@@ -104,8 +107,19 @@ Route::get('/evenements/{id}', [EvenementController::class, 'show'])->name('even
 Route::delete('/reservations/{reservation}/decliner', [ReservationController::class, 'decliner'])->name('reservations.decliner');
 
 
+
 Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
 Route::get('/dashboard/association', [AssociationDashboardController::class, 'index'])->name('association.dashboard');
 Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver')
 ->middleware('auth');
+
+// //Route::middleware('auth')->group(function () {
+//     Route::post('association/{userId}/activate', [UserController::class, 'activate'])->name('association.activate');
+//     Route::post('association/{userId}/deactivate', [UserController::class, 'deactivate'])->name('association.deactivate');
+//});
+
+Route::post('association/{associationId}/activate', [AssociationController::class, 'activate'])->name('association.activate');
+Route::post('association/{associationId}/deactivate', [AssociationController::class, 'deactivate'])->name('association.deactivate');
+
+Route::get('evenementsf/viewOnly', [EvenementController::class, 'index'])->name('evenements.viewOnly');
 
