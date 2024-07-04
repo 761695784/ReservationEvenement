@@ -49,6 +49,9 @@ Route::get('/', function () {
 
 });
 
+Route::get('/', [EvenementController::class, 'accueil'])->name('accueil');
+
+
 
 
 Route::get('/dashboard', function () {
@@ -88,7 +91,7 @@ Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy']
 
 Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
 
-Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
+Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])->name('evenement.reserver');
 
 Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 

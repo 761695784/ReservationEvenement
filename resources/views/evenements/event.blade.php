@@ -19,8 +19,7 @@
                         <p class="card-text">{{$evenement->date_evenement }}</p>
                         <p class="card-text">{{$evenement->lieu}}</p>
                         <a href="#" class="btn btn-primary">Détails</a>
-                        <a href="{{route('evenement.reserver')}}" class="btn btn-secondary">S'inscrire</a>
-                    </div>
+                        <a href="{{ route('evenement.reserver', ['evenement' => $evenement->id]) }}" class="btn btn-secondary">S'inscrire</a>                    </div>
                 </div>
             </div>
             @endforeach

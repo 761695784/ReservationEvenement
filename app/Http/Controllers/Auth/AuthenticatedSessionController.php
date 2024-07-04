@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Evenement;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,13 +20,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-
+        
         // $user = User::create([
-        //     'name' =>'Malang Marna',
-        //     'telephone' => 778128428,
-        //     'email' =>'malcom@gmail.com',
+        //     'name' =>'Oumy Fall',
+        //     'telephone' => 778128427,
+        //     'email' =>'falladiaraoumy@gmail.com',
         //     'password' => Hash::make('123456789'),
-        // ])->assignRole('Administrateur');
+        // ])->assignRole('UtilisateurSimple');
 
         return view('auth.login');
     }
@@ -35,25 +36,28 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $user = $request->user();
+        if (Auth::check() && Auth::user()->hasRole('Administrateur')){
+        return redirect()->intended(route('dashboard.admin', [], false));
+        }
+      
+
+            else if (Auth::check() && Auth::user()->hasRole('Association')) {    
+            return redirect()->intended(route('association.dashboard', [], false));
+        } 
+        else {
+               // Récupérer l'ID de l'événement depuis la base de données
+            //    $evenement = Evenement::latest()->first();
+            // $evenementId = $evenement->id;
+
+            // return redirect()->intended(route('evenement.reserver', ['evenement' => $evenementId], false));        }
 
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('evenement.reserver', absolute: false));
-        $user = $request->user();
-
-        // Vérifie le rôle de l'utilisateur et redirige en conséquence
-        if ($user->hasRole('Administrateur') ) {
-            return redirect()->intended(route('dashboard.admin', [], false));
-        }
-        elseif ($user->hasRole('Association')) {
-            return redirect()->intended(route('association.dashboard', [], false));
-        }
-        else {
-            return redirect()->intended(route('evenement.reserver', [], false));
-        }
-    }
+        return redirect()->intended(route('accueil', absolute: false));
+    }}
 
     /**
      * Destroy an authenticated session.

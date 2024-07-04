@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class EvenementController extends Controller
 {
 
+    public function accueil() {
+        $evenements=Evenement::all();
+        return view('welcome',compact('evenements'));
+    }
+
     public function index() {
         $evenements=Evenement::all();
         return view('evenements.liste',compact('evenements'));
