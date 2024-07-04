@@ -89,7 +89,9 @@ Route::post('/evenements/store', [EvenementController::class, 'store'])->name('e
 
 Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
 
-Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
+// Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');  
+Route::get('/evenements/{id}', [EvenementController::class, 'show'])->name('evenement.details');
+
 
 Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])->name('evenement.reserver');
 

@@ -99,13 +99,20 @@ public function destroy (Evenement $evenement)
 
 }
 
-    public function show(Evenement $evenement)
-    {
-        $user = auth()->user();
-        $association = $user->association; // Assurez-vous que l'association est correctement récupérée
-        return view('evenements.show', compact('evenement', 'user', 'association'));
+    // public function show(Evenement $evenement)
+    // {
+    //     $user = auth()->user();
+    //     $association = $user->association; // Assurez-vous que l'association est correctement récupérée
+    //     return view('evenements.show', compact('evenement', 'user', 'association'));
 
+    // }
+
+    public function show($id)
+    {
+        $evenement = Evenement::findOrFail($id);
+        return view('evenements.show', compact('evenement'));
     }
+
 
 
     public function event(){
