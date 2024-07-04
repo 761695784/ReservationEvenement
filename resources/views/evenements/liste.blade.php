@@ -1,3 +1,5 @@
+@extends('layouts.sidebare_association')
+@section('content')
 <x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,27 +14,6 @@
             font-family: Arial, sans-serif;
         }
 
-        .sidebar-sticky {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            padding-top: 20px;
-        }
-
-        .sidebar-heading {
-            padding: 10px 15px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar .nav-link {
-            font-size: 1rem;
-        }
-
-        .sidebar .nav-link.active {
-            color: #FF6600;
-            font-weight: bold;
-        }
 
         .form-group {
             margin-bottom: 1.5rem;

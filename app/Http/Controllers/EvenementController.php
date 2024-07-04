@@ -123,11 +123,12 @@ class EvenementController extends Controller
         return redirect()->back()->with('status', 'Evenement supprimée avec succès');
     }
 
-    public function show(Evenement $evenement)
+    /*public function showAssociation(Evenement $evenement)
     {
         $user = auth()->user();
         $association = $user->association; // Assurez-vous que l'association est correctement récupérée
         return view('evenements.show', compact('evenement', 'user', 'association'));
+
     }
 
 
@@ -136,4 +137,19 @@ class EvenementController extends Controller
         $evenements = Evenement::all();
         return view('evenements.event', compact('evenements'));
     }
+
+
+    }*/
+    // Affichage des évènements pour les utilisateurs
+    public function event(){
+        $evenements=Evenement::all();
+        return view('evenements.event',compact('evenements'));
+    }
+    public function show($id)
+    {
+        $evenement = Evenement::findOrFail($id);
+        return view('evenements.show', compact('evenement'));
+    }
+
+
 }

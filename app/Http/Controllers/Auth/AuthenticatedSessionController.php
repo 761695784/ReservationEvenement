@@ -82,7 +82,6 @@ class AuthenticatedSessionController extends Controller
             // Authentifiez l'utilisateur mais limitez son accès
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-
                 // Redirection spécifique pour les utilisateurs désactivés
                 return redirect()->route('evenements.viewOnly');
             }
@@ -91,13 +90,20 @@ class AuthenticatedSessionController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                // Redirection en fonction du rôle de l'utilisateur
+                // Vérifie le rôle de l'utilisateur et redirige en conséquence
                 if ($user->hasRole('Administrateur')) {
                     return redirect()->intended(route('dashboard.admin'));
                 } elseif ($user->hasRole('Association')) {
                     return redirect()->intended(route('association.dashboard'));
                 } else {
-                    return redirect()->intended(route('evenements.ajouter'));
+                    // Récupérer le premier événement disponible pour l'utilisateur simple
+                    $evenement = Evenement::first(); // Ajustez cette logique selon vos besoins
+
+                    if ($evenement) {
+                        return redirect()->intended(route('evenement.reserver', ['evenement' => $evenement->id]));
+                    } else {
+                        return redirect('/')->with('error', 'Aucun événement disponible pour la réservation.');
+                    }
                 }
             }
         }

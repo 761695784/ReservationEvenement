@@ -1,5 +1,0 @@
-@extends('layouts.appe')
-@section('content')
-
-
-@endsection
