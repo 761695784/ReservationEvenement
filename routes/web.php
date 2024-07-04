@@ -1,41 +1,43 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Models\Reservation;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use App\Http\Controllers\AssociationDashboardController;
 
 Route::get('/', function () {
-        // $createAdmin=Role::create(['name'=>'Administrateur']);
-        // $createUtilisateuSimple=Role::create(['name'=>'UtilisateurSimple']);
-        // $createAssociation=Role::create(['name'=>'Association']);
+        //$createAdmin=Role::create(['name'=>'Administrateur']);
+        //$createUtilisateuSimple=Role::create(['name'=>'UtilisateurSimple']);
+        //$createAssociation=Role::create(['name'=>'Association']);
 
         // $permissionEvenements = Permission::create(['name'=>'GestionEvenements']);
         // $permissionAssociations = Permission::create(['name'=>'GestionAssociations']);
-        // $permissionSupprimerEvenement = Permission::create(['name'=>'GestionSupprimerEvenement']);
+         //$permissionSupprimerEvenement = Permission::create(['name'=>'GestionSupprimerEvenement']);
         // $permissionReservation = Permission::create(['name'=>'Reservation']);
         // $permissionUtilisateurs = Permission::create(['name'=>'GestionUtilisateurs']);
         // $permissionPermissions = Permission::create(['name'=>'GestionPermissions']);
 
         // $roleAdmin = Role::find(1);
          //$roleAdmin->givePermissionTo('GestionAssociations');
-        // $roleAdmin->givePermissionTo('GestionSupprimerEvenement');
-        // $roleAdmin->givePermissionTo('GestionUtilisateurs');
-        // $roleAdmin->givePermissionTo('GestionPermissions');
-        // $roleAdmin->save();
+         //$roleAdmin->givePermissionTo('GestionSupprimerEvenement');
+         //$roleAdmin->givePermissionTo('GestionUtilisateurs');
+         //$roleAdmin->givePermissionTo('GestionPermissions');
+         //$roleAdmin->save();
 
-        // $roleUtilisateur = Role::find(2);
-        // $roleUtilisateur->givePermissionTo('Reservation');
-        // $roleUtilisateur->save();
+         //$roleUtilisateur = Role::find(2);
+         //$roleUtilisateur->givePermissionTo('Reservation');
+         //$roleUtilisateur->save();
 
-        // $roleAssociation = Role::find(3);
-        // $roleAssociation->givePermissionTo('GestionEvenements');
-        // $roleAssociation->save();
+         $roleAssociation = Role::find(3);
+         $roleAssociation->givePermissionTo('GestionEvenements');
+         $roleAssociation->save();
 
         $user = auth()->user();
 
@@ -83,18 +85,27 @@ Route::post('/evenements/store', [EvenementController::class, 'store'])->name('e
 
 Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
 
-Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
-
-Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
+Route::get('/association/evenements/{id}', [EvenementController::class, 'showAssociation'])->name('evenements.details.association');
 
 Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 
-Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
 
-Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
 
 Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin.listeAsso');
 
+// Routes pour affichage des évènements pour les utilisateurs simples
+Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');
+
+Route::get('/evenements/{evenement_id}/inscrits', [ReservationController::class, 'inscrit'])->name('evenements.inscrits');
+Route::get('/evenements/{id}', [EvenementController::class, 'show'])->name('evenement.details');
+
+
 // Route pour gérer la déclinaison
 Route::delete('/reservations/{reservation}/decliner', [ReservationController::class, 'decliner'])->name('reservations.decliner');
+
+
+Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard.admin');
+Route::get('/dashboard/association', [AssociationDashboardController::class, 'index'])->name('association.dashboard');
+Route::get('/evenement/reservation/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver')
+->middleware('auth');
 

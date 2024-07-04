@@ -94,19 +94,22 @@ public function destroy (Evenement $evenement)
 
 }
 
-    public function show(Evenement $evenement)
+    /*public function showAssociation(Evenement $evenement)
     {
         $user = auth()->user();
         $association = $user->association; // Assurez-vous que l'association est correctement récupérée
         return view('evenements.show', compact('evenement', 'user', 'association'));
 
-    }
-
-
+    }*/
+    // Affichage des évènements pour les utilisateurs
     public function event(){
         $evenements=Evenement::all();
-        return view('layouts.sidebare',compact('evenements'));
-        //return view('evenements.event',compact('evenements'));
+        return view('evenements.event',compact('evenements'));
+    }
+    public function show($id)
+    {
+        $evenement = Evenement::findOrFail($id);
+        return view('evenements.show', compact('evenement'));
     }
     
 

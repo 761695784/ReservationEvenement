@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Evenement;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,18 +41,26 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        //return redirect()->intended(route('dashboard', absolute: false));
         $user = $request->user();
 
         // Vérifie le rôle de l'utilisateur et redirige en conséquence
         if ($user->hasRole('Administrateur') ) {
-            return redirect()->intended(route('dashboard.admin', [], false));
+            return redirect()->intended(route('dashboard.admin'));
         }
         elseif ($user->hasRole('Association')) {
-            return redirect()->intended(route('association.dashboard', [], false));
+            return redirect()->intended(route('association.dashboard'));
         }
         else {
-            return redirect()->intended(route('evenement.reserver', [], false));
+            //return redirect()->intended(route('evenement.reserver'));
+            // Récupérer le premier événement disponible pour l'utilisateur simple
+            $evenement = Evenement::first(); // Ajustez cette logique selon vos besoins
+
+            if ($evenement) {
+                return redirect()->intended(route('evenement.reserver', ['evenement' => $evenement->id]));
+            } else {
+                return redirect()->route('/')->with('error', 'Aucun événement disponible pour la réservation.');
+            }
         }
     }
 

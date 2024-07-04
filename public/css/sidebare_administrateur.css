@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+
+}
+:root{
+    --couleur-pricinpal:#E67E22;
+    --police:Raleway;
+    --taille-titre:30px;
+    --taille-sous-titre:24px;
+    --taille-text:16px;
+}
+body {
+    font-family: var(--police);
+    overflow-x: hidden;
+}
+.wrapper {
+    position: relative;
+    flex-direction: column;
+    
+}
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    left: 0;
+}
+.logo-container {
+    padding: 10px;
+    width: 120px;
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+}
+hr {
+    height: 2px;
+    color: var(--couleur-pricinpal);
+}
+.menu-list {
+    padding-bottom: 20px;
+}
+.menu-list li{
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;   
+}
+.menu-list li a{
+    font-weight: bold;
+    color: #000000;
+    gap: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    transition: color 0.3s ease;
+    font-size: var(--taille-texte);
+}
+
+.sidebar .menu-list a{
+    color: #000000;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.sidebar .menu-list a:hover,
+.sidebar .logout-list a:hover {
+    color: #ffffff;
+    background-color: var(--couleur-pricinpal);
+    border-radius: 5px;
+}
+
+.sidebar .menu-list a.active,
+.sidebar .logout-list a.active {
+    color: #ffffff;
+    background-color: var(--couleur-pricinpal);
+    border-radius: 5px;
+}
+
+.sidebar .menu-list li a i:hover,
+.sidebar .logout-list a:hover svg .icon-path {
+    fill: #ffffff; 
+}
+
+.sidebar .menu-list li a i.active,
+.sidebar .logout-list a.active svg .icon-path {
+    fill: #ffffff; 
+}
+
+.logout-button {
+    background-color: var(--couleur-pricinpal);
+    width: 156px;
+    height: 50px;
+    border-radius: 11px;
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none; /* Enlever la bordure */
+    outline: none; /* Enlever l'outline */
+    cursor: pointer; /* Ajouter un curseur pointer */
+}
+
+.logout-button a {
+    font-weight: bold;
+    color: #ffffff;
+    gap: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center; 
+    width: 100%;
+    transition: color 0.3s ease;
+    font-size: var(--taille-texte);
+}
+.main-content{
+    margin-left: 250px;
+    margin-top: 180px;
+}
+.top-bar{
+    height: 80px;
+    position: fixed;
+    margin-left: 250px;
+    border-bottom: 1px solid var(--couleur-principale);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+   background-color: #ffffff;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.top-bar h2{
+    color: var(--couleur-pricinpal);
+    font-size: var(--taille-sous-titre);
+   text-align: right;
+   margin-right: 200px;
+    
+}

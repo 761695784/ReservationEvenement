@@ -13,9 +13,12 @@
 }
 nav {
     padding: 10px 20px;
-    border-bottom: 1px solid #e9ecef;
-    background-color: var(--couleur-pricinpal);
+    background-color: transparent;
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {

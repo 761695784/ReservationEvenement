@@ -1,3 +1,5 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -37,6 +39,7 @@
             <x-primary-button class="ms-3">
                 {{ __('Connexion') }}
             </x-primary-button><br>
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">S'INSCRIRE</a>
 
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
@@ -82,9 +85,6 @@
             background-color: #E67E22;
             font-size: 20px !important;
             height: 50px !important;
-
-
-
         }
     </style>
 

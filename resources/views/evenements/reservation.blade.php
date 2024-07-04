@@ -70,7 +70,7 @@
                     <!-- Champ de nom complet en lecture seule -->
                     <div class="form-group">
                         <label for="name">Nom Complet</label>
-                        <input type="text" class="form-control" id="name" value="{{ auth()->user()->name }}" readonly>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}" readonly>
                     </div>
 
                     <!-- Champ d'e-mail en lecture seule -->
