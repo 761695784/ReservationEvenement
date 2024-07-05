@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Models\Reservation;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
+use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 Route::get('/', function () {
         // $createAdmin=Role::create(['name'=>'Administrateur']);
@@ -72,9 +73,13 @@ Route::post('/register/association', [RegisteredUserController::class, 'storeAss
 
 require __DIR__.'/auth.php';
 
+Route::resource('roles', RoleController::class);//pour spécifier à Laravel que l'on va utiliser les ressources pour role
+
 
 
 Route::get('/liste', [EvenementController:: class,'index']);
+// Route::get('/roles', [RoleController:: class,'index']);
+
 
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'edit'])->name('evenements.edit');
 
