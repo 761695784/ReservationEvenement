@@ -83,9 +83,10 @@ class AuthenticatedSessionController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-<<<<<<< HEAD
         //return redirect()->intended(route('dashboard', absolute: false));
         $user = $request->user();
+            }
+        }
 
         // Vérifie le rôle de l'utilisateur et redirige en conséquence
         if ($user->hasRole('Administrateur') ) {
@@ -103,32 +104,34 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended(route('evenement.reserver', ['evenement' => $evenement->id]));
             } else {
                 return redirect()->route('/')->with('error', 'Aucun événement disponible pour la réservation.');
-=======
-                // Redirection spécifique pour les utilisateurs désactivés
-                return redirect()->route('evenements.viewOnly');
-            }
-        } else {
-            // Procédez à l'authentification normale
-            if (Auth::attempt($credentials)) {
-                $request->session()->regenerate();
 
-                // Redirection en fonction du rôle de l'utilisateur
-                if ($user->hasRole('Administrateur')) {
-                    return redirect()->intended(route('dashboard.admin'));
-                } elseif ($user->hasRole('Association')) {
-                    return redirect()->intended(route('association.dashboard'));
-                } else {
-                    return redirect()->intended(route('evenements.ajouter'));
-                }
->>>>>>> marna
+        //         // Redirection spécifique pour les utilisateurs désactivés
+        //         return redirect()->route('evenements.viewOnly');
+        //     }
+        // } else {
+        //     // Procédez à l'authentification normale
+        //     if (Auth::attempt($credentials)) {
+        //         $request->session()->regenerate();
+
+        //         // Redirection en fonction du rôle de l'utilisateur
+        //         if ($user->hasRole('Administrateur')) {
+        //             return redirect()->intended(route('dashboard.admin'));
+        //         } elseif ($user->hasRole('Association')) {
+        //             return redirect()->intended(route('association.dashboard'));
+        //         } else {
+        //             return redirect()->intended(route('evenements.ajouter'));
+        //         }
             }
-        }
+        
+        
+    }
+}
 
         // Si les informations d'identification ne sont pas correctes
-        return back()->withErrors([
-            'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
-        ]);
-    }
+       // return back()->withErrors([
+           // 'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
+       // ]);
+    
 
     /**
      * Destroy an authenticated session.
@@ -144,3 +147,8 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 }
+        
+    
+    
+            
+        

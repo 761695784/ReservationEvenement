@@ -16,7 +16,7 @@
         <nav class="sticky-top">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <a style="font-weight:700;font-size:30px;" href="/">Nom evenement</a>
+                    <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="img-fluid" style="max-height: 100px;">
                 </div>
                 <ul class="nav-links">
                     <li class="{{ Route::is('/') ? 'active-link' : '' }}">
@@ -38,7 +38,9 @@
     <footer>
         <div class="avant_footer">
             <div class="joindre">
-                <h2>Nom du plateform</h2>
+                <h2>
+                    <img src="{{ asset('images/logo2.png') }}" alt="">
+                </h2>
                 <h4>Vous pouvez nous suivre</h4>
                 <div class="icone">
                     <img src="{{ asset('images/facebook.png') }}" alt="" width="40" height="40">
@@ -69,9 +71,6 @@
             <div class="line"></div>
         </div>
     </footer>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     

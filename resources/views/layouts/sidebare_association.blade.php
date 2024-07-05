@@ -20,7 +20,7 @@
                 
                 <ul class="menu-list">
                     <li>
-                        <a href="{{route('association.dashboard')}}" class="{{ request()->is('association.dashboard') ? 'active' : '' }}">
+                        <a href="{{route('association.dashboard')}}" class="{{ request()->is('{{--association.dashboard--}}dashboard_association') ? 'active' : '' }}">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>

@@ -114,13 +114,12 @@ class EvenementController extends Controller
         $evenement->save(); // Sauvegarder l'événement dans la base de données
         return redirect()->back()->with('status', 'Votre événement a été modifié');
 
-}
-public function destroy (Evenement $evenement)
-{
-    $evenement->delete();
-    return redirect()->back()->with('status', 'Evenement supprimée avec succès');
-
-}
+    }
+    public function destroy (Evenement $evenement)
+    {
+        $evenement->delete();
+        return redirect()->back()->with('status', 'Evenement supprimée avec succès');
+    }  
 
     /*public function showAssociation(Evenement $evenement)
     {

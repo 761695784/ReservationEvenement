@@ -92,8 +92,6 @@ Route::get('/association/evenements/{id}', [EvenementController::class, 'showAss
 
 Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 
-
-
 Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin.listeAsso');
 
 // Routes pour affichage des évènements pour les utilisateurs simples
