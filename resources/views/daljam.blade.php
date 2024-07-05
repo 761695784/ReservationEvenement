@@ -216,7 +216,7 @@
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 11.5C11.337 11.5 10.7011 11.2366 10.2322 10.7678C9.76339 10.2989 9.5 9.66304 9.5 9C9.5 8.33696 9.76339 7.70107 10.2322 7.23223C10.7011 6.76339 11.337 6.5 12 6.5C12.663 6.5 13.2989 6.76339 13.7678 7.23223C14.2366 7.70107 14.5 8.33696 14.5 9C14.5 9.66304 14.2366 10.2989 13.7678 10.7678C13.2989 11.2366 12.663 11.5 12 11.5ZM4.5 18.5C4.5 15.67 9 14.025 12 14.025C15 14.025 19.5 15.67 19.5 18.5V19.5H4.5V18.5Z" fill="black"/>
                             </svg>
-                            <span class="ml-1">{{ $evenement->user->nom }}</span>
+
                         </span>
                     </div>
                     <p class="card-text">{{ $evenement->description }}</p>
@@ -256,7 +256,7 @@
         </div>
         <div class="contact-form">
             <h2>Contactez-nous</h2>
-            <form method="post" action="{{ route('contact.store') }}">
+            <form method="post" action="#">
                 @csrf
                 <div class="form-group">
                     <label for="name">Nom</label>

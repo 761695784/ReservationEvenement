@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Événements</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <link href="{{ asset('css/event.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
 }
         </style>
         <div class="header-container">
-         <header class="header">  
+         <header class="header">
             <nav class="sticky-top">
             <div class="nav-container">
                 <div class="nav-logo">
@@ -52,21 +52,16 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-        </nav> 
+        </nav>
         <div class="banner-content">
             <h1>ÉVÈNEMENTS</h1>
-        </div>   
+        </div>
             </header>
         </div>
     <div class="container mt-5">
         <div class="row">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-    
-                @auth<button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    {{ __('Log Out') }}
-                </button>@endauth
-            </form>
+
+
             @foreach ($evenements as $evenement)
                 <div class="col-md-4">
                     <div class="card">
@@ -77,11 +72,25 @@
                             <p class="card-text">{{ $evenement->date_evenement }}</p>
                             <p class="card-text">{{ $evenement->lieu }}</p>
                             <div class="btn-container">
-                                <a href="{{ route('evenement.details', $evenement->id) }}" class="btn btn1">Détails</a>
+                                <a href="#" class="btn btn1">Détails</a>
+                                {{-- {{ route('evenement.details', $evenement->id) }} --}}
                                 <a href="{{ route('evenement.reserver', ['evenement' => $evenement->id]) }}" class="btn btn2">Réserver</a>
                             </div>
                         </div>
                     </div>
+{{-- =======
+            @foreach($evenements as $evenement)
+            <!-- Example of an event card, repeat for each event -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('storage/' . $evenement->image) }}" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$evenement->nom}}</h5>
+                        <p class="card-text">{{$evenement->date_evenement }}</p>
+                        <p class="card-text">{{$evenement->lieu}}</p>
+                        <a href="#" class="btn btn-primary">Détails</a>
+                        <a href="{{ route('evenement.reserver', ['evenement' => $evenement->id]) }}" class="btn btn-secondary">S'inscrire</a>                    </div>
+>>>>>>> Oumyna --}}
                 </div>
                 @endforeach
         </div>
