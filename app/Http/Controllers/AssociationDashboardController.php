@@ -11,6 +11,6 @@ class AssociationDashboardController extends Controller
         $user = auth()->user();
         $association = $user->association;
 
-        return view('dashboard.association', compact('association'));
+        return view('dashboard', compact('association'));
     }
 }

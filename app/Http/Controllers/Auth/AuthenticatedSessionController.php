@@ -22,11 +22,11 @@ class AuthenticatedSessionController extends Controller
     {
 
         // $user = User::create([
-        //     'name' =>'Oumy Fall',
-        //     'telephone' => 778128427,
-        //     'email' =>'falladiaraoumy@gmail.com',
+        //     'name' =>'Malang',
+        //     'telephone' => 778128428,
+        //     'email' =>'admin@gmail.com',
         //     'password' => Hash::make('123456789'),
-        // ])->assignRole('UtilisateurSimple');
+        // ])->assignRole('Administrateur');
 
         return view('auth.login');
     }
@@ -111,7 +111,7 @@ class AuthenticatedSessionController extends Controller
 // <<<<<<< HEAD
                 // Vérifie le rôle de l'utilisateur et redirige en conséquence
                 if ($user->hasRole('Administrateur')) {
-                    return redirect()->intended(route('dashboard.admin'));
+                    return redirect()->intended(route('admin.listeAsso'));
                 } elseif ($user->hasRole('Association')) {
                     return redirect()->intended(route('association.dashboard'));
                 } else {
