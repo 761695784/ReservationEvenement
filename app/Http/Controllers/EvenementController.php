@@ -14,6 +14,7 @@ class EvenementController extends Controller
         // Récupérer l'utilisateur connecté
         $user = Auth::user();
 
+<<<<<<< HEAD
         // Vérifiez que l'utilisateur a une association
         if (!$user->association) {
             return redirect()->route('login')->with('error', 'Votre compte n\'est pas associé à une association.');
@@ -23,6 +24,16 @@ class EvenementController extends Controller
         $evenements = Evenement::where('association_id', $user->association->id)->get();
 
         return view('evenements.liste', compact('evenements'));
+=======
+    public function accueil() {
+        $evenements=Evenement::all();
+        return view('welcome',compact('evenements'));
+    }
+
+    public function index() {
+        $evenements=Evenement::all();
+        return view('evenements.liste',compact('evenements'));
+>>>>>>> Oumyna
     }
 
 
@@ -123,15 +134,38 @@ class EvenementController extends Controller
         return redirect()->back()->with('status', 'Evenement supprimée avec succès');
     }
 
+<<<<<<< HEAD
     /*public function showAssociation(Evenement $evenement)
     {
         $user = auth()->user();
         $association = $user->association; // Assurez-vous que l'association est correctement récupérée
         return view('evenements.show', compact('evenement', 'user', 'association'));
+=======
+}
+public function destroy (Evenement $evenement)
+{
+    $evenement->delete();
+    return redirect()->back()->with('status', 'Evenement supprimée avec succès');
 
+}
+
+    // public function show(Evenement $evenement)
+    // {
+    //     $user = auth()->user();
+    //     $association = $user->association; // Assurez-vous que l'association est correctement récupérée
+    //     return view('evenements.show', compact('evenement', 'user', 'association'));
+>>>>>>> Oumyna
+
+    // }
+
+    public function show($id)
+    {
+        $evenement = Evenement::findOrFail($id);
+        return view('evenements.show', compact('evenement'));
     }
 
 
+<<<<<<< HEAD
     public function event()
     {
         $evenements = Evenement::all();
@@ -141,6 +175,9 @@ class EvenementController extends Controller
 
     }*/
     // Affichage des évènements pour les utilisateurs
+=======
+
+>>>>>>> Oumyna
     public function event(){
         $evenements=Evenement::all();
         return view('evenements.event',compact('evenements'));

@@ -1,9 +1,11 @@
 <?php
+
 use App\Models\Association;
 use App\Models\Reservation;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
@@ -14,6 +16,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 use App\Http\Controllers\AssociationDashboardController;
+
+
 
 Route::get('/', function () {
         //$createAdmin=Role::create(['name'=>'Administrateur']);
@@ -54,6 +58,9 @@ Route::get('/', function () {
 
 });
 
+Route::get('/', [EvenementController::class, 'accueil'])->name('accueil');
+
+
 
 
 Route::get('/dashboard', function () {
@@ -74,9 +81,17 @@ Route::post('/register/association', [RegisteredUserController::class, 'storeAss
 
 require __DIR__.'/auth.php';
 
+Route::resource('roles', RoleController::class);//pour spécifier à Laravel que l'on va utiliser les ressources pour role
 
 
-Route::get('/liste', [EvenementController:: class,'index'])->name('association.dashboard');
+
+// <<<<<<< HEAD
+// Route::get('/liste', [EvenementController:: class,'index'])->name('association.dashboard');
+// =======
+Route::get('/liste', [EvenementController:: class,'index']);
+// Route::get('/roles', [RoleController:: class,'index']);
+
+// >>>>>>> Oumyna
 
 Route::get('/evenement/modifier/{id}', [EvenementController:: class,'edit'])->name('evenements.edit');
 
@@ -84,11 +99,22 @@ Route::post('/modifier_traitement/{id}', [EvenementController:: class,'update'])
 
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.ajouter');
 
+
+
+ //  Route::get('/evenement/reserver/{evenement}', [ReservationController::class,'reserver'])->name('evenement.reserver');
 Route::post('/evenements/store', [EvenementController::class, 'store'])->name('evenements.store');
 
 Route::delete('/evenements/{evenement}', [EvenementController::class, 'destroy'])->name('evenements.destroy');
 
+// <<<<<<< HEAD
 Route::get('/association/evenements/{id}', [EvenementController::class, 'showAssociation'])->name('evenements.details.association');
+// =======
+// Route::get('/evenements/{evenement}', [EvenementController::class, 'show'])->name('evenements.show');
+Route::get('/evenements/{id}', [EvenementController::class, 'show'])->name('evenement.details');
+
+
+Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])->name('evenement.reserver');
+// >>>>>>> Oumyna
 
 Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 

@@ -60,6 +60,7 @@
         </div>
     <div class="container mt-5">
         <div class="row">
+
             @foreach ($evenements as $evenement)
                 <div class="col-md-4">
                     <div class="card">
@@ -76,6 +77,19 @@
                             </div>
                         </div>
                     </div>
+{{-- =======
+            @foreach($evenements as $evenement)
+            <!-- Example of an event card, repeat for each event -->
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('storage/' . $evenement->image) }}" class="card-img-top" alt="Event Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$evenement->nom}}</h5>
+                        <p class="card-text">{{$evenement->date_evenement }}</p>
+                        <p class="card-text">{{$evenement->lieu}}</p>
+                        <a href="#" class="btn btn-primary">Détails</a>
+                        <a href="{{ route('evenement.reserver', ['evenement' => $evenement->id]) }}" class="btn btn-secondary">S'inscrire</a>                    </div>
+>>>>>>> Oumyna --}}
                 </div>
                 @endforeach
         </div>

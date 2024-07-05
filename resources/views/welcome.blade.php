@@ -1,110 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Accueil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('css/navbar1.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <style>
-        .banniere{
-            background-color: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2%;
-        }
-        .banniere img {
-            margin-right: 10vh;
-        }
-        .button{
+        .bg-custom-orange {
             background-color: #E67E22;
-            width: auto;
-            color: #f2f2f2;
-            padding: 2vh;
-            border: 1vh;
-            border-radius: 1vh;
-            justify-content: center;
-            font-size: 15px;
         }
-        .texteBanniere p{
-            font-size: 32px;
-            width: 458px;
+        .hover-bg-custom-orange:hover {
+            background-color: #D35400;
         }
 
-        .evenements{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            }
-             h1 {
-            text-align: center;
-        }
-        
-        .event{
-            background-image: url('{{ asset('storage/images/rectangle10.png') }}');
-            background-repeat: no-repeat;
-            
-        }
-        .evenements .texte {
-            background-color: #f5f5f5;
-            width: 29.5%;
-            height: 16vh;
-            font-size: 15px;
-            margin-top: -1px;
-            padding-top: 20px;
-            color: gray;
-            text-align: center;
-            padding-left: 100px;
-            padding-right: 90px;
-        }
-        .evenements .titre{
-            background-color: #E67E22;
-            color: #f2f2f2;
-            width: 43.5%;
-            padding:0.005vh 0.05vh 0.005vh 0.05vh;
-            text-align: center;
-            font-size: 14px;
-            margin-top: 12%;
-        }
-
-        
-        .detailsEvent{
-            background-image: url('{{ asset('storage/images/rectangle10.png') }}');
-            background-repeat: no-repeat;
-            color:white;
-            
-        }
-
-        .date{
-            color: #f2f2f2;
-            background-color: #f77d00;
-            width: 3%;
-            font-size: 17px;
-        }
-
-        .valeur{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+        .col p {
             text-align: center;
         }
 
-        .valeurs{
-            margin-top: 20%;
-
+        .btn-orange {
+            border: 1px solid black;
+            padding: 1% 20%;
         }
 
-        .qui-sommes-nous{
+        .qui-sommes-nous {
             margin-top: 5%;
             display: flex;
             margin-left: 10%;
             align-items: center;
-            
         }
+
         .grid-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
             gap: 20px;
             max-width: 1000px;
             margin: 0 10%;
@@ -112,20 +42,17 @@
         }
 
         .grid-item {
-            padding: -15%;
             background-color: #fff;
         }
 
         .grid-item img {
             max-width: 100%;
             height: auto;
-            /* border-radius: 8px; */
         }
 
-        .image1{
+        .image1 {
             margin-top: -25px;
             margin-left: -20px;
-
         }
 
         .text-orange {
@@ -133,12 +60,9 @@
         }
 
         .description {
-            width: 50%;
-            font-size: 18px;
             width: 380px;
+            font-size: 18px;
         }
-
-
 
         .contact-container {
             display: grid;
@@ -148,17 +72,13 @@
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
-            /* border-radius: 8px; */
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
-            /* margin-top: 5%; */
-            margin-left: 10%;
+            margin-left: 20%;
         }
-        
 
         .contact-form .form-group {
             margin-bottom: 15px;
@@ -167,18 +87,18 @@
         }
 
         .adresse {
-           display: flex;
-
+            display: flex;
         }
 
-        .adresse :first-child{
+        .adresse :first-child {
             margin-right: 5%;
             width: 90%;
         }
 
-        .adresse :last-child{
+        .adresse :last-child {
             width: 97%;
         }
+
         .contact-form button {
             background-color: #f77d00;
             color: #fff;
@@ -200,146 +120,169 @@
             margin-top: 15%;
         }
 
-        label{
+        label {
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 1%;
         }
 
-
-     
-
-</style>
+        .text-center {
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="banniere">
-    <div>
-        <img src="{{ asset('storage/images/image5.png') }}" alt="banniere">
-    </div>
-    <div class="texteBanniere">
-        <p>
-            LES BONS MOMENTS SONT MEILLEURS LORSQU'ILS SONT PLANIFIES
-        </p>
-        <button class="button">Réserver maintenant</button>
-    </div>
-    </div>
-    <h1>NOS EVENEMENTS PHARES</h1>
-    <section class="Evenement"></section>
-        <div class="evenements">
-            <div class="event">
-                <div class="image">
-                    <p class="date">27 JUN</p>
-                    <div class="titre">
-                        <h3>SOIREE DE DISTINCTION DES ENTREPRISES</h3>
+    <div class="relative bg-gradient-to-r from-purple-600 to-blue-600 h-screen text-white overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Background Image" class="object-cover object-center w-full h-full" />
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <header>
+            <nav class="sticky-top">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <a style="font-weight:700;font-size:30px;" href="/"><img src="{{ asset('storage/images/logo.png')}}" alt=""></a>
                     </div>
+                    <ul class="nav-links">
+                        <li class="{{ Route::is('/') ? 'active-link' : '' }}">
+                            <a href="{{ url('/') }}">Accueil</a>
+                        </li>
+                        <li class="{{ Route::is('evenement.event') ? 'active-link' : '' }}">
+                            <a href="/evenement/event">Évènements</a>
+                        </li>
+                    </ul>
+                    <ul class="contact">
+                        <li><a href="contact">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="texte">
-                    <p>Cet événement annuel réunit les leaders de l'industrie, les entrepreneurs influents, les décideurs politiques et les personnalités médiatiques pour une soirée de reconnaissance et de célébration.</p>
-                </div>
-           
-        
-                <div class="detailsEvent">
-                    <h3>soirée de disctinction des entreprises</h3>
-                    <div class="Detail">
-                    <p><img src="{{ asset('storage/images/calendrier.png') }}" alt=""> 27 Juin 2024</p>
-                    </div>
-                    <div class="Detail">
-                        <p><img src="{{ asset('storage/images/Vector.png') }}" alt=""> 27 Juin 2024</p>
-                    </div>     
-                    <div class="Detail">
-                        <p><img src="{{ asset('storage/images/Vector2.png') }}" alt=""> 27 Juin 2024</p>
-                </div>    </div>
-            
-        {{-- </div> --}}
-<div class="valeurs">
-        <h1>NOS VALEURS</h1>
-
-        <div class="valeur">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('storage/images/Vector.png') }}" class="card-img-top" alt="..." height="50" width="60">
-                <div class="card-body">
-                  <p class="card-text">Lorem Ipsum is simply dummy
-                    text of the printing and typesetting
-                    industry. Lorem Ipsum has been
-                    the industry's standard dummy
-                    text ever since the 1500s,</p>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <img src="{{ asset('storage/images/Vector-1.png') }}" class="card-img-top" alt="..." height="50" width="60">
-                <div class="card-body">
-                  <p class="card-text">Lorem Ipsum is simply dummy
-text of the printing and typesetting
-industry. Lorem Ipsum has been
-the industry's standard dummy
-text ever since the 1500s,</p>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <img src="{{ asset('storage/images/Vector-2.png') }}" class="card-img-top" alt="..." height="50" width="60">
-                <div class="card-body">
-                  <p class="card-text">Lorem Ipsum is simply dummy
-text of the printing and typesetting
-industry. Lorem Ipsum has been
-the industry's standard dummy
-text ever since the 1500s,</p>
-                </div>
-              </div>
+            </nav>
+        </header>
+        <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+            <h1 class="text-5xl font-bold leading-tight mb-4">Unique et parfait</h1>
+            <p class="text-lg text-gray-300 mb-8">Nous offrons à nos clients la meillleure plateforme de réservation d’événements</p>
+            <a href="#" class="bg-custom-orange text-white hover-bg-custom-orange py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">Réservez maintenant</a>
         </div>
     </div>
 
-        <div class="container mt-5 qui-sommes-nous">
-            <div class="grid-container">
-                <div class="grid-item image1">
-                    <img src="{{ asset('storage/images/image1.png') }}" alt="Image 1"  height="242" width="242">
-                </div>
-                <div class="grid-item image1">
-                    <img src="{{ asset('storage/images/image2.png') }}" alt="Image 2" height="242" width="242">
-                </div>
-                <div class="grid-item image1">
-                    <img src="{{ asset('storage/images/image3.png') }}" alt="Image 3" height="242" width="242">
-                </div>
-                <div class="grid-item image1">
-                    <img src="{{ asset('storage/images/image4.png') }}" alt="Image 4" height="242" width="242">
-                </div>
-            </div>
-            <div class="description">
-                <h2 class="text-orange">QUI SOMMES-NOUS ?</h2>
-                <p>
-                    Notre Plateforme de Gestion de Réservations pour Événements est une solution innovante conçue pour simplifier et optimiser le processus de réservation et de gestion d'événements. Nous sommes une équipe de professionnels passionnés par la technologie et l'événementiel, dédiés à offrir une expérience utilisateur exceptionnelle pour les organisateurs et les participants.
-                </p>
+    <!-- Categories Section -->
+    <div class="row mb-5 mt-5 ml-40">
+        <div class="col">
+            <img src="{{ asset('storage/images/divertissement.png') }}" class="category-img" alt="Category 1">
+            <div class="text-center mr-40">
+                <p>Divertissement</p>
             </div>
         </div>
+        <div class="col">
+            <img src="{{ asset('storage/images/conference.png') }}" class="category-img" alt="Category 1">
+            <div class="text-center mr-40">
+                <p>Conference</p>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{{ asset('storage/images/musique.png') }}" class="category-img" alt="Category 1">
+            <div class="text-center mr-40">
+                <p>Musique</p>
+            </div>
+        </div>
+        <div class="col">
+            <img src="{{ asset('storage/images/tech.png') }}" class="category-img" alt="Category 1">
+            <div class="text-center mr-40">
+                <p>Tech</p>
+            </div>
+        </div>
+    </div>
 
-        <div class="container contact-container">
-            <div class="contact-form">
-                <h2 class="text-center">Contactez-nous</h2>
-                <p class="text-center">Veuillez mettre vos coordonnées pour nous contacter</p>
-                <form>
-                    <div class="adresse">
-                    <div class="form-group ">
-                        <label for="name">Nom de l'association</label>
-                        <input type="text" class="form-control" id="name" placeholder="Simplon Sénégal">
+    <!-- Event Cards -->
+    <div class="row">
+        @foreach($evenements as $evenement)
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('storage/' . $evenement->image) }}" class="card-img-top event-img" alt="Event Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $evenement->nom }}</h5>
+                    <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+                        <span class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                            <svg height="13px" width="13px" viewBox="0 0 512 512">
+                                <g>
+                                    <g>
+                                        <path d="M256,0C114.837,0,0,114.837,0,256s114.837,256,256,256s256-114.837,256-256S397.163,0,256,0z M277.333,256 c0,11.797-9.536,21.333-21.333,21.333h-85.333c-11.797,0-21.333-9.536-21.333-21.333s9.536-21.333,21.333-21.333h64v-128 c0-11.797,9.536-21.333,21.333-21.333s21.333,9.536,21.333,21.333V256z"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span class="ml-1">{{ $evenement->date_evenement }}</span>
+                        </span>
+
+                        <span class="py-1 text-xs font-regular text-gray-900 mr-1 flex flex-row items-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 11.5C11.337 11.5 10.7011 11.2366 10.2322 10.7678C9.76339 10.2989 9.5 9.66304 9.5 9C9.5 8.33696 9.76339 7.70107 10.2322 7.23223C10.7011 6.76339 11.337 6.5 12 6.5C12.663 6.5 13.2989 6.76339 13.7678 7.23223C14.2366 7.70107 14.5 8.33696 14.5 9C14.5 9.66304 14.2366 10.2989 13.7678 10.7678C13.2989 11.2366 12.663 11.5 12 11.5ZM4.5 18.5C4.5 15.67 9 14.025 12 14.025C15 14.025 19.5 15.67 19.5 18.5V19.5H4.5V18.5Z" fill="black"/>
+                            </svg>
+                            <span class="ml-1">{{ $evenement->user->nom }}</span>
+                        </span>
                     </div>
-                    <div class="form-group">
-                        <label for="location">Adresse de localisation</label>
-                        <input type="text" class="form-control" id="location" placeholder="Sacré Coeur 2">
-                    </div>
+                    <p class="card-text">{{ $evenement->description }}</p>
+                    <a href="#" class="btn btn-primary">Réservez maintenant</a>
                 </div>
-                    <div class="form-group">
-                        <label for="email">Adresse Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="email@janesfakedomain.net">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" rows="4" placeholder="Veuillez décrire votre association en quelques lignes"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-orange">Envoyer</button>
-                </form>
-            </div>
-            <div class="contact-image">
-                <img src="{{ asset('storage/images/image8.png') }}" alt="Image 8" >
             </div>
         </div>
+        @endforeach
+    </div>
+
+    <!-- Grid Section -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="qui-sommes-nous">
+                <img src="{{ asset('storage/images/interrogation.png') }}" class="image1" alt="Image1">
+                <p class="text-orange">Qui sommes-nous?</p>
+            </div>
+            <p class="description">
+                Nous sommes une entreprise spécialisée dans l'organisation d'événements. Notre mission est de vous offrir des expériences uniques et mémorables.
+            </p>
+        </div>
+        <div class="grid-item">
+            <div class="qui-sommes-nous">
+                <img src="{{ asset('storage/images/puzzle.png') }}" class="image1" alt="Image2">
+                <p class="text-orange">Notre mission</p>
+            </div>
+            <p class="description">
+                Offrir à nos clients des événements sur mesure, adaptés à leurs besoins et à leurs attentes, tout en garantissant un service de qualité.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <div class="contact-image">
+            <img src="{{ asset('storage/images/contact.jpg') }}" alt="Contact Image">
+        </div>
+        <div class="contact-form">
+            <h2>Contactez-nous</h2>
+            <form method="post" action="{{ route('contact.store') }}">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="adresse">
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" class="form-control" id="sujet" name="sujet" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

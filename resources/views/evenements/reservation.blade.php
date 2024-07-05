@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <style>
     body {
         background-color: #f8f9fa;
@@ -41,9 +40,10 @@
         margin-bottom: 20px;
     }
 </style>
+
 @if (session('status'))
 <div class="alert alert-success">
-    {{session('status')}}
+    {{ session('status') }}
 </div>
 @endif
 @if (session('error'))
@@ -51,16 +51,21 @@
     {{ session('error') }}
 </div>
 @endif
+
 <body>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 mb-3 mb-md-0">
                 <!-- Image de l'événement -->
-                <img src="{{ asset('storage/' . $evenement->image) }}" class="img-fluid" alt="Table setting">
+                @if ($evenement && $evenement->image)
+                    <img src="{{ asset('storage/' . $evenement->image) }}" class="img-fluid" alt="Table setting">
+                @else
+                    <p>Aucune image disponible pour cet événement.</p>
+                @endif
             </div>
             <div class="col-md-6">
                 <h2 class="text-center text-orange">Reservation</h2>
-                <form action="{{route('reservation.store')}}" method="POST">
+                <form action="{{ route('reservation.store') }}" method="POST">
                     @csrf
                     <!-- Champ caché pour l'ID de l'événement -->
                     <input type="hidden" name="evenement_id" value="{{ $evenement->id }}">
@@ -90,7 +95,8 @@
                     <button type="submit" class="btn btn-orange btn-block">Valider</button>
 
                     <!-- Nombre de places disponibles -->
-                    <p class="text-center mt-3">Nombre de places disponibles : <span class="text-danger">{{ $evenement->nombre_place }}</span></p>                </form>
+                    <p class="text-center mt-3">Nombre de places disponibles : <span class="text-danger">{{ $evenement->nombre_place }}</span></p>
+                </form>
             </div>
         </div>
     </div>
@@ -100,4 +106,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 </x-app-layout>
+
