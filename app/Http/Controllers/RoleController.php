@@ -2,76 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $roles = Role::all();
-        return view('roles', compact('roles'));
+        $roles = Role::with('permissions')->get();
+        return view('roles.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('roles.ajouter');
+        $permissions = Permission::all();
+        return view('roles.create', compact('permissions'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-      
-        ]);
-
-        Role::create($validatedData);
-    
-        return redirect()->back()->with('status', "Le role a été ajouté avec succès");
+        $role = Role::create($request->only('name', 'description'));
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('roles.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Role $role)
     {
-        //
+        $permissions = Permission::all();
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Role $role)
     {
-        $role = Role::findOrFail($id);
-        return view('roles.modifier', compact('roles'));
-
-
+        $role->update($request->only('name', 'description'));
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('roles.index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Role $role)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $role->delete();
+        return redirect()->route('roles.index');
     }
 
     
