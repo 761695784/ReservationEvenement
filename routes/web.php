@@ -120,7 +120,9 @@ Route::post('/reservation/store', [ReservationController::class, 'store'])->name
 
 
 
+
 Route::get('/admin/listeAsso', [AdminController::class, 'accueil'])->name('admin.listeAsso')->middleware('auth');
+
 
 // Routes pour affichage des évènements pour les utilisateurs simples
 Route::get('/evenement/event', [EvenementController::class,'event'])->name('evenement.event');

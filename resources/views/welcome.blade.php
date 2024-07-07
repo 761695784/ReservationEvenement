@@ -6,6 +6,7 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/navbar1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <style>
@@ -141,18 +142,18 @@
             <nav class="sticky-top">
                 <div class="nav-container">
                     <div class="nav-logo">
-                        <a style="font-weight:700;font-size:30px;" href="/"><img src="{{ asset('storage/images/logo.png')}}" alt=""></a>
+                        <img src="{{ asset('images/logo2.png') }}" alt="Logo" class="img-fluid" style="max-height: 100px;">
                     </div>
                     <ul class="nav-links">
-                        <li class="{{ Route::is('/') ? 'active-link' : '' }}">
-                            <a href="{{ url('/') }}">Accueil</a>
+                        <li class="{{ Route::is('accueil') ? 'active-link' : '' }}">
+                            <a href="/">Accueil</a>
                         </li>
                         <li class="{{ Route::is('evenement.event') ? 'active-link' : '' }}">
                             <a href="/evenement/event">Évènements</a>
                         </li>
                     </ul>
                     <ul class="contact">
-                        <li><a href="contact">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </nav>

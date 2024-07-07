@@ -61,6 +61,7 @@
     <div class="container mt-5">
         <div class="row">
 
+
             @foreach ($evenements as $evenement)
                 <div class="col-md-4">
                     <div class="card">
@@ -84,7 +85,9 @@
     <footer>
         <div class="avant_footer">
             <div class="joindre">
-                <h2>Nom du plateform</h2>
+                <h2>
+                    <img src="{{ asset('images/logo2.png') }}" alt="">
+                </h2>
                 <h4>Vous pouvez nous suivre</h4>
                 <div class="icone">
                     <img src="{{ asset('images/facebook.png') }}" alt="" width="40" height="40">

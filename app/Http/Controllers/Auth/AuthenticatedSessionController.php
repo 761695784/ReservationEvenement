@@ -100,6 +100,7 @@ class AuthenticatedSessionController extends Controller
             // Authentifiez l'utilisateur mais limitez son accès
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
+
                 // Redirection spécifique pour les utilisateurs désactivés
                 return redirect()->route('evenements.viewOnly');
             }
@@ -125,17 +126,17 @@ class AuthenticatedSessionController extends Controller
                     }
                 }
             }
-        }
-
         // Si les informations d'identification ne sont pas correctes
         return back()->withErrors([
             'email' => 'Les informations d\'identification fournies ne correspondent pas à nos enregistrements.',
         ]);
     }
+}
 // =======
 //         return redirect()->intended(route('accueil', absolute: false));
 //     }}
 // >>>>>>> Oumyna
+
 
     /**
      * Destroy an authenticated session.
