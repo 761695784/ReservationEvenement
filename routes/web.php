@@ -86,7 +86,7 @@ Route::resource('roles', RoleController::class);//pour spécifier à Laravel que
 
 
 
- Route::get('/liste', [EvenementController:: class,'index'])->name('association.dashboard');
+ Route::get('/liste', [EvenementController:: class,'index'])->name('association.event')->middleware('auth');
 
 //Route::get('/liste', [EvenementController:: class,'index']);
 // Route::get('/roles', [RoleController:: class,'index']);
@@ -113,7 +113,7 @@ Route::get('/association/evenements/{id}', [EvenementController::class, 'showAss
 Route::get('/evenements/{id}', [EvenementController::class, 'show'])->name('evenement.details');
 
 
-Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])->name('evenement.reserver');
+Route::get('/evenement/reservation/{evenement}', [ReservationController::class, 'reserver'])->name('evenement.reserver')->middleware('auth');
 // >>>>>>> Oumyna
 
 Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');

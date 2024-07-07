@@ -114,7 +114,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">
+                                <a class="nav-link active" href="{{route('association.event')}}">
                                     <i class="fas fa-calendar-alt"></i> Evénements
                                 </a>
                             </li>

@@ -131,6 +131,7 @@ class EvenementController extends Controller
         return redirect()->back()->with('status', 'Evenement supprimée avec succès');
     }
 
+
 public function showAssociation(Evenement $evenement)
     {
         $user = auth()->user();

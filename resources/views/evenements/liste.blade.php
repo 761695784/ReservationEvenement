@@ -84,7 +84,7 @@
                                 <td>{{ $evenement->nombre_place }}</td>
                                 {{-- <td>{{ $evenement->dernier_delai }}</td> --}}
                                 <td>
-                                    <a href="{{ route('evenements.show', $evenement->id) }}" class="btn action">
+                                    <a href="{{ route('evenements.details.association', $evenement->id) }}" class="btn action">
                                         <i class="fas fa-eye">Details</i></a>
 
                                     <a href="{{route('evenements.edit', $evenement->id)}}" class="icon" title="Modifier">
@@ -111,21 +111,7 @@
     </div>
 </div>
 
-<!-- Modal pour les détails -->
-<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Détails du evenement</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Contenu dynamique des détails du evenement -->
-                <div id="modalContent"></div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>

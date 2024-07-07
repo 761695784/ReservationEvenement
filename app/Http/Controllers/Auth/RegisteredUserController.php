@@ -53,8 +53,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('evenement.reserver'));
-    }
+        return redirect()->route('evenement.reserver', ['evenement' => $request->evenement_id]);
+        }
        public function storeAssociation(Request $request): RedirectResponse
     {
         $request->validate([
